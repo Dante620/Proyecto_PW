@@ -1,0 +1,35 @@
+GET http://localhost:4001/compra/usuario/1
+
+####
+
+GET http://localhost:4001/compra
+
+####
+
+POST http://localhost:4001/compra
+Content-Type: application/json
+
+{
+    "id_usuario": 1,
+    "id_carrito": 1
+
+}
+
+
+###
+
+PUT http://localhost:4001/estudiante
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Estudiante 4",
+    "lastName": "Apellido 4",
+    "email": "estudiante4@estudiante-actualizado.com",
+    "code": "104",
+    "program": "Arquitectura"
+}
+
+####
+
+DELETE http://localhost:4001/pedido/1

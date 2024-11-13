@@ -1,0 +1,28 @@
+# Obtener todos los carritos de un usuario con ID 1
+GET http://localhost:4001/producto
+
+###
+
+# Obtener el carrito activo de un usuario con ID 1
+GET http://localhost:4001/carrito/active/1
+
+###
+
+# Crear un nuevo carrito para el usuario con ID 1
+POST http://localhost:4001/carrito
+Content-Type: application/json
+
+{
+    "id_usuario": 2
+}
+
+###
+
+# Completar (actualizar) el carrito con ID 1
+PUT http://localhost:4001/carrito/1
+Content-Type: application/json
+
+###
+
+# Eliminar el carrito activo del usuario con ID 1
+DELETE http://localhost:4001/carrito/1

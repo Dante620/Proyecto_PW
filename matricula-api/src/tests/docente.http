@@ -1,0 +1,32 @@
+# Agregar un producto al carrito con ID 1
+POST http://localhost:4001/itemCarrito/1
+Content-Type: application/json
+
+{
+  
+    "productId": 1,
+    "quantity": 2
+}
+
+###
+
+# Obtener todos los productos del carrito con ID 
+GET http://localhost:4001/itemCarrito/1
+
+###
+
+# Actualizar la cantidad de un producto en el carrito
+# Cambia {itemId} por el ID del producto en el carrito que quieres actualizar
+PUT http://localhost:4001/itemCarrito/1/1
+Content-Type: application/json
+
+{
+
+    "quantity": 5
+}
+
+###
+
+# Eliminar un producto del carrito
+# Cambia {itemId} por el ID del producto en el carrito
+DELETE http://localhost:4001/itemCarrito/1

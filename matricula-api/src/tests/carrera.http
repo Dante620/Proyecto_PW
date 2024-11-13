@@ -1,0 +1,39 @@
+GET http://localhost:4001/producto
+
+####
+
+GET http://localhost:4001/curso/4
+
+####
+
+POST http://localhost:4001/usuario
+Content-Type: application/json
+
+{
+       
+        "nombre": "pedro",
+        "apellido": "Juan",
+        "email": "renzo@gmail.com",
+        "password": "123456",
+        "rol": "usuario"
+       
+       
+
+
+       
+}
+
+###
+
+PUT http://localhost:4001/producto
+Content-Type: application/json
+
+{
+        "id": 1,
+        "nombre": "minecraft"
+        
+}
+
+####
+
+DELETE http://localhost:4001/carrera/1
