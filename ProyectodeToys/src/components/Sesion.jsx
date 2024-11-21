@@ -1,5 +1,6 @@
 import React from 'react';
 import './Sesion.css';
+import { Link } from 'react-router-dom'; 
 
 const Sesion = () => {
   return (
@@ -15,6 +16,18 @@ const Sesion = () => {
           <li className="menu-item">🤖 CLUB TOYS MASTER</li>
           <li className="menu-item">🙂 RESEÑAS</li>
         </ul>
+        <ul id="social-icons">
+                <li><img src="../../imagenes/Imagen29.jpg" alt="Social 1" className="social-icon" /></li>
+                    <li>
+                        
+                        <Link to="/login">
+                            <img src="../../imagenes/Imagen30.jpg" alt="User Icon" className="social-icon" />
+                        </Link>
+                    </li>
+                    
+                    <li><img src="../../imagenes/Imagen31.jpg" alt="Social 3" className="social-icon" /></li>
+                    <li><img src="../../imagenes/Imagen32.jpg" alt="Social 4" className="social-icon" /></li>
+                </ul>
       </header>
       <div className="login-container">
         <h1>Inicio de sesión</h1>
