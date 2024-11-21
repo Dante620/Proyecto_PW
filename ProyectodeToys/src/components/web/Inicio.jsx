@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import { Link } from 'react-router-dom'; 
 import './Inicio.css';
 
 const Inicio = () => {
+    const [showSearchModal, setShowSearchModal] = useState(false);
     return (
         <>
             <header id="main-header">
@@ -19,7 +20,11 @@ const Inicio = () => {
                     <li className="menu-item">🙂 RESEÑAS</li>
                 </ul>
                 <ul id="social-icons">
-                <li><img src="../../imagenes/Imagen29.jpg" alt="Social 1" className="social-icon" /></li>
+
+                <li onClick={() => setShowSearchModal(true)}>
+                        <img src="../../imagenes/Imagen29.jpg" alt="Search Icon" className="social-icon" />
+                    </li>
+
                     <li>
                         
                         <Link to="/login">
@@ -31,6 +36,22 @@ const Inicio = () => {
                     <li><img src="../../imagenes/Imagen32.jpg" alt="Social 4" className="social-icon" /></li>
                 </ul>
             </header>
+
+            {showSearchModal && (
+                <div className="search-overlay">
+                    <div className="search-bar">
+                        <input
+                            type="text"
+                            placeholder="Búsqueda"
+                            className="search-bar-input"
+                        />
+                        <button className="search-bar-close" onClick={() => setShowSearchModal(false)}>
+                            X
+                        </button>
+                    </div>
+                </div>
+            )}
+
             <div className="banner-section">
                 <ul>
                     <li><img src="../../imagenes/Arriba/Imagen2.jpg" alt="Banner 1" /></li>
