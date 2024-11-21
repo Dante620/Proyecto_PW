@@ -1,8 +1,8 @@
 import React from 'react';
-import './Sesion.css';
+import './Crear.css';
 import { Link } from 'react-router-dom'; 
 
-const Sesion = () => {
+const Crear = () => {
   return (
     <div className="login-page">
       <header id="main-header">
@@ -29,22 +29,22 @@ const Sesion = () => {
                     <li><img src="../../imagenes/Imagen32.jpg" alt="Social 4" className="social-icon" /></li>
                 </ul>
       </header>
-      <div className="login-container">
-        <h1>Inicio de sesión</h1>
+      <div className="login-container"> 
         <form>
-          <input type="email" placeholder="Correo electrónico" required />
-          <input type="password" placeholder="Contraseña" required />
-          <a href="#" className="forgot-password">¿Olvidaste tu contraseña?</a>
-          <button type="submit" className="login-button">Iniciar sesión</button>
-          <Link to="/Register"><p>Crear cuenta</p></Link>
+        <input type="text" placeholder="Nombre"/>
+        <input type="text" placeholder="Apellido"/>
+        <input type="email" placeholder="Correo electrónico" required />
+        <input type="password" placeholder="Contraseña" required />
+        <input type="password" placeholder="Repetir contraseña" required />
+        <button className="login-button">Crear</button>
         </form>
+        
       </div>
       <footer>
         <p>© 2024, Toys Master Tecnología de Shopify</p>
         <p>Notifications Powered by RocketPush</p>
       </footer>
-    </div>
-  );
-};
-
-export default Sesion;
+     </div>
+     
+  )}
+  export default Crear;
