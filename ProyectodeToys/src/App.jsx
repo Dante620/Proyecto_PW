@@ -1,12 +1,18 @@
-import './App.css'
-import Inicio from './components/web/inicio'
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Inicio from './components/web/Inicio';
+import Sesion from './components/Sesion';
 
+function App() {
   return (
-    <>
-      <Inicio />
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        
+        <Route path="/login" element={<Sesion />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
