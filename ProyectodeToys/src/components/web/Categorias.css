@@ -1,0 +1,16 @@
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 elementos por fila */
+    gap: 20px; /* Espaciado entre elementos */
+    margin-top: 20px;
+  }
+  
+  .categoria-item {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc; /* Opcional: bordes para los elementos */
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Fondo claro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    font-size: 16px; /* Tamaño del texto */
+  }

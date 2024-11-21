@@ -10,8 +10,10 @@ const Inicio = () => {
                     <img src="../../imagenes/Imagen1.jpg" alt="Logo" id="logo-image" />
                 </a>
                 <ul id="menu">
-                    <li className="menu-item">📁 CATEGORÍAS</li>
-                    <li className="menu-item">🔜 PRE-VENTA</li>
+                <a href="/categorias" className="menu-link">📁 CATEGORÍAS</a>
+                <li class="menu-item">
+                <a href="/categorias/Pre-venta" className="menu-link">🔜 PRE-VENTA</a>
+                 </li>
                     <li className="menu-item">💰 MASTER POINTS</li>
                     <li className="menu-item">🤖 CLUB TOYS MASTER</li>
                     <li className="menu-item">🙂 RESEÑAS</li>
