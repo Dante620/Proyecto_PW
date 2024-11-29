@@ -6,13 +6,13 @@ GET http://localhost:4001/curso/4
 
 ####
 
-POST http://localhost:4001/usuario
+POST https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario
 Content-Type: application/json
 
 {
-       
-        "nombre": "pedro",
-        "apellido": "Juan",
+       "id": 1,
+        "nombre": "sandra",
+        "apellido": "pedro",
         "email": "renzo@gmail.com",
         "password": "123456",
         "rol": "admin"

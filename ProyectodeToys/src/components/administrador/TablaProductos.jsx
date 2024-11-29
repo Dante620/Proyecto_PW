@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './ProductoTabla.css';
+
 const ProductoComponent = () => {
-  // State for managing products and form data
   const [productos, setProductos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [marcas, setMarcas] = useState([]);
   const [currentProducto, setCurrentProducto] = useState({
     id: null,
     nombre: '',
     descripcion: '',
-    precio: ''
+    precio: '',
+    id_categoria: '',
+    id_marca: ''
   });
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,16 +19,26 @@ const ProductoComponent = () => {
   // Fetch all products
   const findAll = async () => {
     try {
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
-      if (!response.ok) throw new Error('Network response was not ok');
-      const data = await response.json();
-      setProductos(data);
+      const productosResponse = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
+      const categoriasResponse = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/categoria');
+      const marcasResponse = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/marca');
+
+      if (!productosResponse.ok) throw new Error('Error fetching productos');
+      if (!categoriasResponse.ok) throw new Error('Error fetching categorias');
+      if (!marcasResponse.ok) throw new Error('Error fetching marcas');
+
+      const productosData = await productosResponse.json();
+      const categoriasData = await categoriasResponse.json();
+      const marcasData = await marcasResponse.json();
+
+      setProductos(productosData);
+      setCategorias(categoriasData);
+      setMarcas(marcasData);
     } catch (error) {
-      console.error('Error fetching products:', error);
-      alert('Failed to fetch products');
+      console.error('Error fetching data:', error);
+      alert(error.message);
     }
   };
-
   // Find one product by ID
   const findOne = async (id) => {
     try {
@@ -41,46 +55,57 @@ const ProductoComponent = () => {
   };
 
   // Create a new product
-  const create = async () => {
-    try {
-      const { id, ...productData } = currentProducto;
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(productData)
-      });
-      if (!response.ok) throw new Error('Network response was not ok');
-      findAll();
-      resetForm();
-      setIsModalOpen(false);
-    } catch (error) {
-      console.error('Error creating product:', error);
-      alert('Failed to create product');
-    }
-  };
+const create = async () => {
+  try {
+    // Find the maximum existing ID and increment
+    const maxId = productos.length > 0 
+      ? Math.max(...productos.map(p => p.id)) 
+      : 0;
+    
+    const newProducto = {
+      ...currentProducto,
+      id: maxId + 1
+    };
+
+    const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProducto)
+    });
+    if (!response.ok) throw new Error('Network response was not ok');
+    findAll();
+    resetForm();
+    setIsModalOpen(false);
+  } catch (error) {
+    console.error('Error creating product:', error);
+    alert('Failed to create product');
+  }
+};
 
   // Update an existing product
   const update = async () => {
     try {
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(currentProducto)
-      });
-      if (!response.ok) throw new Error('Network response was not ok');
-      findAll();
-      resetForm();
-      setIsModalOpen(false);
-    } catch (error) {
-      console.error('Error updating product:', error);
-      alert('Failed to update product');
-    }
-  };
+        const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(currentProducto)
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
 
+        // Actualizar el producto en el estado sin alterar el orden
+        setProductos(productos.map(p => (p.id === currentProducto.id ? currentProducto : p)));
+
+        resetForm();
+        setIsModalOpen(false);
+    } catch (error) {
+        console.error('Error updating product:', error);
+        alert('Failed to update product');
+    }
+};
   // Remove a product
   const remove = async (id) => {
     try {
@@ -127,10 +152,22 @@ const ProductoComponent = () => {
   };
 
   // Load products on component mount
+ 
   useEffect(() => {
     findAll();
   }, []);
 
+  const getCategoryName = (id_categoria) => {
+    const categoria = categorias.find(cat => cat.id === id_categoria);
+    return categoria ? categoria.nombre : 'N/A';
+  };
+
+  const getMarcaName = (id_marca) => {
+    const marca = marcas.find(marc => marc.id === id_marca);
+    return marca ? marca.nombre : 'N/A';
+  };
+
+  // Render method
   return (
     <div className="producto-container">
       <div className="producto-header">
@@ -147,6 +184,8 @@ const ProductoComponent = () => {
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Precio</th>
+            <th>Categoría</th>
+            <th>Marca</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -157,6 +196,8 @@ const ProductoComponent = () => {
               <td>{producto.nombre}</td>
               <td>{producto.descripcion}</td>
               <td>${producto.precio}</td>
+              <td>{getCategoryName(producto.id_categoria)}</td>
+              <td>{getMarcaName(producto.id_marca)}</td>
               <td>
                 <div className="action-buttons">
                   <button 
@@ -178,64 +219,98 @@ const ProductoComponent = () => {
         </tbody>
       </table>
 
+      {/* Modal form remains the same */}
       {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>{isEditing ? 'Editar Producto' : 'Nuevo Producto'}</h2>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              isEditing ? update() : create();
-            }}>
-              <div className="form-group">
-                <label htmlFor="nombre">Nombre</label>
-                <input
-                  id="nombre"
-                  name="nombre"
-                  value={currentProducto.nombre}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="descripcion">Descripción</label>
-                <input
-                  id="descripcion"
-                  name="descripcion"
-                  value={currentProducto.descripcion}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="precio">Precio</label>
-                <input
-                  id="precio"
-                  name="precio"
-                  type="number"
-                  value={currentProducto.precio}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="modal-actions">
-                <button 
-                  type="button" 
-                  onClick={() => setIsModalOpen(false)} 
-                  className="btn-cancel"
-                >
-                  Cancelar
-                </button>
-                <button 
-                  type="submit" 
-                  className="btn-submit"
-                >
-                  {isEditing ? 'Actualizar' : 'Crear'}
-                </button>
-              </div>
-            </form>
-          </div>
+  <div className="modal-overlay">
+    <div className="modal-content">
+      <h2>{isEditing ? 'Editar Producto' : 'Nuevo Producto'}</h2>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        isEditing ? update() : create();
+      }}>
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            value={currentProducto.nombre}
+            onChange={handleInputChange}
+            required
+          />
         </div>
-      )}
+        <div className="form-group">
+          <label htmlFor="descripcion">Descripción</label>
+          <input
+            type="text"
+            id="descripcion"
+            name="descripcion"
+            value={currentProducto.descripcion}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="precio">Precio</label>
+          <input
+            type="number"
+            id="precio"
+            name="precio"
+            value={currentProducto.precio}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="id_categoria">Categoría</label>
+          <select
+            id="id_categoria"
+            name="id_categoria"
+            value={currentProducto.id_categoria}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Seleccionar Categoría</option>
+            {categorias.map((categoria) => (
+              <option key={categoria.id} value={categoria.id}>
+                {categoria.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="id_marca">Marca</label>
+          <select
+            id="id_marca"
+            name="id_marca"
+            value={currentProducto.id_marca}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Seleccionar Marca</option>
+            {marcas.map((marca) => (
+              <option key={marca.id} value={marca.id}>
+                {marca.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-actions">
+          <button type="submit" className="btn-save">
+            {isEditing ? 'Actualizar' : 'Crear'}
+          </button>
+          <button 
+            type="button" 
+            className="btn-cancel" 
+            onClick={() => setIsModalOpen(false)}
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
     </div>
   );
 };

@@ -13,6 +13,7 @@ import PedidoComponent from './components/administrador/TablaPedidos.jsx';
 import CompraComponent from './components/administrador/TablaCompras.jsx';
 import CarritoItemsComponent from './components/administrador/TablaItemCarrito.jsx';
 import Layout from './components/administrador/Layout.jsx';
+import GestionImagenesProductos from './components/administrador/TablaImagenes.jsx';
 function App() {
   return (
     <Router>
@@ -23,13 +24,19 @@ function App() {
         <Route path="/categorias" element={<Categorias />}/>
         <Route path="/categorias/:nombreCategoria" element={<ProductosCategoria />}/>
         <Route path="/productos/:nombreProducto" element={<Productos />}/>
-        <Route path="/admin" element={<Layout />} />
+      <Route path="/admin" element={<Layout />}>
+        <Route index element={<Usuarios />} /> {/* Ruta por defecto */}
         <Route path="/admin/usuarios" element={<Usuarios />} />
         <Route path="/admin/productos" element={<ProductoComponent />} />
         <Route path="/admin/carritos" element={<CarritoComponent />} />
         <Route path="/admin/pedidos" element={<PedidoComponent />} />
         <Route path="/admin/compras" element={<CompraComponent />} />
         <Route path="/admin/itemcarrito/:id" element={<CarritoItemsComponent />} />
+        <Route path="/admin/imagenes" element={<GestionImagenesProductos />} />
+
+      </Route>
+
+
 
       </Routes>
     </Router>
