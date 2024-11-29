@@ -22,7 +22,9 @@ const imagenesproducto = sequelize.define('imagenesproducto', {
         allowNull: false
     }
     
-})
+}, {
+    timestamps: false // Deshabilita createdAt y updatedAt
+});
 
 imagenesproducto.belongsTo(producto, { foreignKey: 'id_producto' });
 

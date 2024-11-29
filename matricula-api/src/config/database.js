@@ -3,7 +3,7 @@ import  Sequelize  from "sequelize";
 const hostname= 'localhost';
 const username= 'postgres';
 
-const password= '1234' ;
+const password= 'admin' ;
 const database= 'toymaster';
 const port= 5432;
 const dialect= 'postgres';

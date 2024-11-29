@@ -27,6 +27,8 @@ const carrito = sequelize.define('carrito', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
+}, {
+    timestamps: false // Deshabilita createdAt y updatedAt
 });
 
 // Establecer la relación

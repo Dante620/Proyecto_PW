@@ -29,6 +29,8 @@ const itemcarrito = sequelize.define('item_carrito', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
+}, {
+    timestamps: false // Deshabilita createdAt y updatedAt
 });
 
 

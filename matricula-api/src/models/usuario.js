@@ -30,6 +30,8 @@ const usuario = sequelize.define('usuario', {
         allowNull: false
     }
     
-})
+}, {
+    timestamps: false // Deshabilita createdAt y updatedAt
+});
 
 export default usuario;

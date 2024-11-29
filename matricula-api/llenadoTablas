@@ -1,0 +1,578 @@
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol  ) VALUES (1, 'Juan', 'García', 'Calle Principal 123', '12345678', 'juan@gmail.com', '987654321', 'contr123');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (2, 'María', 'López', 'Avenida Central 456', '87654321', 'maria@gmail.com', '654321987', 'contr456');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (3, 'Carlos', 'Martínez', 'Calle Secundaria 789', '13579246', 'carlos@gmail.com', '789456123', 'contr789');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (4, 'Ana', 'Rodríguez', 'Plaza Mayor 101', '24681357', 'ana@gmail.com', '321654987', 'contr101');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (5, 'David', 'González', 'Calle Estrella 202', '36925814', 'david@gmail.com', '159357852', 'contr202');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (6, 'Laura', 'Pérez', 'Paseo del Sol 303', '58246139', 'laura@gmail.com', '852963741', 'contr303');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (7, 'Pedro', 'Sánchez', 'Calle Luna 404', '97531864', 'pedro@gmail.com', '456123789', 'contr404');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (8, 'Sofía', 'Hernández', 'Avenida del Parque 505', '12398765', 'sofia@gmail.com', '987654123', 'contr505');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (9, 'Javier', 'Díaz', 'Calle Río 606', '65432198', 'javier@gmail.com', '741852963', 'contr606');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (10, 'Paula', 'Muñoz', 'Calle Mar 707', '98765432', 'paula@gmail.com', '852741963', 'contr707');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (11, 'Daniel', 'Ruiz', 'Calle Monte 808', '12312312', 'daniel@gmail.com', '963852741', 'contr808');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (12, 'Andrea', 'Gómez', 'Avenida del Lago 909', '45645645', 'andrea@gmail.com', '123456789', 'contr909');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (13, 'Elena', 'Vázquez', 'Calle Nueva 1010', '78978978', 'elena@gmail.com', '987123654', 'contr1010');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (14, 'Alejandro', 'Jiménez', 'Avenida Vieja 1111', '14714714', 'alejandro@gmail.com', '369258147', 'contr1111');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (15, 'Lucía', 'Torres', 'Calle Antigua 1212', '25825825', 'lucia@gmail.com', '741369852', 'contr1212');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (16, 'Manuel', 'Flores', 'Plaza Nueva 1313', '36936936', 'manuel@gmail.com', '852963741', 'contr1313');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (17, 'Carmen', 'Santiago', 'Paseo del Pueblo 1414', '45645645', 'carmen@gmail.com', '123456789', 'contr1414');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (18, 'Mario', 'Ortega', 'Calle Real 1515', '96396396', 'mario@gmail.com', '987654321', 'contr1515');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (19, 'Sara', 'Navarro', 'Avenida Grande 1616', '32132132', 'sara@gmail.com', '654987321', 'contr1616');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (20, 'José', 'Iglesias', 'Calle Pequeña 1717', '74174174', 'jose@gmail.com', '369852147', 'contr1717');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (21, 'Eva', 'Rojas', 'Calle Mayor 1818', '85285285', 'eva@gmail.com', '147258369', 'contr1818');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (22, 'Pablo', 'Blanco', 'Plaza Peatonal 1919', '15915915', 'pablo@gmail.com', '369147258', 'contr1919');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (23, 'Isabel', 'Santos', 'Calle Estrecha 2020', '25836912', 'isabel@gmail.com', '741852963', 'contr2020');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (24, 'Alonso', 'Castro', 'Avenida Ancha 2121', '36914725', 'alonso@gmail.com', '123456789', 'contr2121');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (25, 'Natalia', 'Molina', 'Calle Larga 2222', '98765432', 'natalia@gmail.com', '369258147', 'contr2222');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (26, 'Roberto', 'Cruz', 'Calle Estrecha 2323', '65478912', 'roberto@gmail.com', '987654321', 'contr2323');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (27, 'Beatriz', 'García', 'Avenida Ancha 2424', '36925814', 'beatriz@gmail.com', '741852963', 'contr2424');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (28, 'Antonio', 'León', 'Calle Real 2525', '12345678', 'antonio@gmail.com', '369258147', 'contr2525');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (29, 'Clara', 'Reyes', 'Calle Nueva 2626', '98765432', 'clara@gmail.com', '123456789', 'contr2626');
+INSERT INTO cliente (id, nombre, apellido, email, password ,rol ) VALUES (30, 'Raul', 'Morales', 'Calle Mayor 2727', '12345678', 'raul@gmail.com', '369258147', 'contr2727') ; 
+
+
+INSERT INTO categoria (id, nombre) VALUES (1, 'Aliens');
+INSERT INTO categoria (id, nombre) VALUES (2, 'Animes');
+INSERT INTO categoria (id, nombre) VALUES (3, 'Autos-Buses-Camiones');
+INSERT INTO categoria (id, nombre) VALUES (4, 'Aviones Comerciales');
+INSERT INTO categoria (id, nombre) VALUES (5, 'Aviones Militares');
+INSERT INTO categoria (id, nombre) VALUES (6, 'Barcos y Submarinos');
+INSERT INTO categoria (id, nombre) VALUES (7, 'Bloques de construcción');
+INSERT INTO categoria (id, nombre) VALUES (8, 'Bomberos');
+INSERT INTO categoria (id, nombre) VALUES (9, 'DC Comics');
+INSERT INTO categoria (id, nombre) VALUES (10, 'Dinosaurios');
+INSERT INTO categoria (id, nombre) VALUES (11, 'Dioramas');
+INSERT INTO categoria (id, nombre) VALUES (12, 'Disney');
+INSERT INTO categoria (id, nombre) VALUES (13, 'Espacial');
+INSERT INTO categoria (id, nombre) VALUES (14, 'Formula 1');
+INSERT INTO categoria (id, nombre) VALUES (15, 'Gundam');
+INSERT INTO categoria (id, nombre) VALUES (16, 'Harry Potter');
+INSERT INTO categoria (id, nombre) VALUES (17, 'Helicopteros');
+INSERT INTO categoria (id, nombre) VALUES (18, 'Juegos de mesa');
+INSERT INTO categoria (id, nombre) VALUES (19, 'Llaveros');
+INSERT INTO categoria (id, nombre) VALUES (20, 'Locomotoras y trenes');
+INSERT INTO categoria (id, nombre) VALUES (21, 'Macross robotech');
+INSERT INTO categoria (id, nombre) VALUES (22, 'Maquinarias');
+INSERT INTO categoria (id, nombre) VALUES (23, 'Marvel');
+INSERT INTO categoria (id, nombre) VALUES (24, 'Transformers');
+INSERT INTO categoria (id, nombre) VALUES (25, 'Motos y bicicletas');
+INSERT INTO categoria (id, nombre) VALUES (26, 'Musica');
+INSERT INTO categoria (id, nombre) VALUES (27, 'Predator');
+INSERT INTO categoria (id, nombre) VALUES (28, 'Games');
+INSERT INTO categoria (id, nombre) VALUES (29, 'Star Wars');
+INSERT INTO categoria (id, nombre) VALUES (30, 'Peliculas');
+INSERT INTO categoria (id, nombre) VALUES (31, 'Pre-venta');
+
+-- No duplicados
+
+INSERT INTO marcas (id, nombre) VALUES (1, 'Good Smile Company');
+INSERT INTO marcas (id, nombre) VALUES (2, 'ABYstyle');
+INSERT INTO marcas (id, nombre) VALUES (3, 'Bandai');
+INSERT INTO marcas (id, nombre) VALUES (4, 'BanPresto');
+INSERT INTO marcas (id, nombre) VALUES (5, 'Mundo 3D');
+INSERT INTO marcas (id, nombre) VALUES (6, 'Pokemon');
+INSERT INTO marcas (id, nombre) VALUES (7, 'Toys Master');
+INSERT INTO marcas (id, nombre) VALUES (8, 'Airfix'); -- autos-buses-camiones
+INSERT INTO marcas (id, nombre) VALUES (9, 'American Diorama');
+INSERT INTO marcas (id, nombre) VALUES (10, 'Hot Wheels');
+INSERT INTO marcas (id, nombre) VALUES (11, 'Jada Toys');
+INSERT INTO marcas (id, nombre) VALUES (12, 'Jinchejiang');
+INSERT INTO marcas (id, nombre) VALUES (13, 'MatchBox');
+INSERT INTO marcas (id, nombre) VALUES (14, 'Mattel');
+INSERT INTO marcas (id, nombre) VALUES (15, 'Metal Collection');
+INSERT INTO marcas (id, nombre) VALUES (16, 'Dragon Wings'); -- aviones comerciales
+INSERT INTO marcas (id, nombre) VALUES (17, 'Gemini 200');
+INSERT INTO marcas (id, nombre) VALUES (18, 'Inflight200');
+INSERT INTO marcas (id, nombre) VALUES (19, 'Atlas'); -- aviones militares
+INSERT INTO marcas (id, nombre) VALUES (20, 'De Agostini');
+INSERT INTO marcas (id, nombre) VALUES (21, 'Forces of Valor');
+INSERT INTO marcas (id, nombre) VALUES (22, 'Motor City Classics');
+INSERT INTO marcas (id, nombre) VALUES (23, 'Balody'); -- bloques de construcción
+INSERT INTO marcas (id, nombre) VALUES (24, 'Leachuan');
+INSERT INTO marcas (id, nombre) VALUES (25, 'Linkgo');
+INSERT INTO marcas (id, nombre) VALUES (26, 'PlayMobile');
+INSERT INTO marcas (id, nombre) VALUES (27, 'Iron Studios'); -- DC Comics
+INSERT INTO marcas (id, nombre) VALUES (28, 'McFarlane Toys');
+INSERT INTO marcas (id, nombre) VALUES (29, 'Neca');
+INSERT INTO marcas (id, nombre) VALUES (30, 'Beast Kingdom'); -- dinosaurios
+INSERT INTO marcas (id, nombre) VALUES (31, 'Medicom');
+INSERT INTO marcas (id, nombre) VALUES (32, 'Mijo Exclusives');
+INSERT INTO marcas (id, nombre) VALUES (33, 'Diamond Select Toys'); -- Disney
+INSERT INTO marcas (id, nombre) VALUES (34, 'Daron'); -- espacial
+INSERT INTO marcas (id, nombre) VALUES (35, 'Herpa');
+INSERT INTO marcas (id, nombre) VALUES (36, 'Hobby Master');
+INSERT INTO marcas (id, nombre) VALUES (37, 'Bburago'); -- Formula 1
+INSERT INTO marcas (id, nombre) VALUES (38, 'Capcom'); -- Games
+INSERT INTO marcas (id, nombre) VALUES (39, 'Funko');
+INSERT INTO marcas (id, nombre) VALUES (40, 'Jakks Pacific');
+INSERT INTO marcas (id, nombre) VALUES (41, 'Goldie');
+INSERT INTO marcas (id, nombre) VALUES (42, 'Kidrobot');
+INSERT INTO marcas (id, nombre) VALUES (43, 'Wise Hawk');
+INSERT INTO marcas (id, nombre) VALUES (44, 'Youtooz');
+INSERT INTO marcas (id, nombre) VALUES (45, 'Monogram');
+INSERT INTO marcas (id, nombre) VALUES (46, 'Nemesis Now');
+INSERT INTO marcas (id, nombre) VALUES (47, 'Academy');
+INSERT INTO marcas (id, nombre) VALUES (48, 'Altaya');
+INSERT INTO marcas (id, nombre) VALUES (49, 'Italeri');
+INSERT INTO marcas (id, nombre) VALUES (50, 'Zvesda');
+INSERT INTO marcas (id, nombre) VALUES (51, 'Aquarius');
+INSERT INTO marcas (id, nombre) VALUES (52, 'Bicycle');
+INSERT INTO marcas (id, nombre) VALUES (53, 'Evoretro');
+INSERT INTO marcas (id, nombre) VALUES (54, 'Illumination');
+INSERT INTO marcas (id, nombre) VALUES (55, 'Theory11');
+INSERT INTO marcas (id, nombre) VALUES (56, 'ABYstyle Studio');
+INSERT INTO marcas (id, nombre) VALUES (57, 'Marvel');
+INSERT INTO marcas (id, nombre) VALUES (58, 'SD toys');
+INSERT INTO marcas (id, nombre) VALUES (59, 'Hornby');
+INSERT INTO marcas (id, nombre) VALUES (60, 'Kitzconcept');
+INSERT INTO marcas (id, nombre) VALUES (61, 'ThreeZero');
+INSERT INTO marcas (id, nombre) VALUES (62, 'Diecast Masters');
+INSERT INTO marcas (id, nombre) VALUES (63, 'HUINA TOYS');
+INSERT INTO marcas (id, nombre) VALUES (64, 'HY-Trucks');
+INSERT INTO marcas (id, nombre) VALUES (65, 'KDW');
+INSERT INTO marcas (id, nombre) VALUES (66, 'Bitty Boomers');
+INSERT INTO marcas (id, nombre) VALUES (67, 'Disney');
+INSERT INTO marcas (id, nombre) VALUES (68, 'Hasbro');
+INSERT INTO marcas (id, nombre) VALUES (69, 'MAFEX');
+INSERT INTO marcas (id, nombre) VALUES (70, 'Medicom Toy');
+INSERT INTO marcas (id, nombre) VALUES (71, 'Alloy Model');
+INSERT INTO marcas (id, nombre) VALUES (72, 'F-Toys');
+INSERT INTO marcas (id, nombre) VALUES (73, 'Haixing Toys');
+INSERT INTO marcas (id, nombre) VALUES (74, 'Jiaye Model');
+INSERT INTO marcas (id, nombre) VALUES (75, 'Maisto');
+INSERT INTO marcas (id, nombre) VALUES (76, 'Mountainbike');
+INSERT INTO marcas (id, nombre) VALUES (77, 'Xiangbao');
+INSERT INTO marcas (id, nombre) VALUES (78, 'BST AXN');
+INSERT INTO marcas (id, nombre) VALUES (79, 'Mega');
+INSERT INTO marcas (id, nombre) VALUES (80, 'Super 7');
+INSERT INTO marcas (id, nombre) VALUES (81, 'Trick or Treat');
+INSERT INTO marcas (id, nombre) VALUES (82, 'Hiya Toys');
+INSERT INTO marcas (id, nombre) VALUES (83, 'Trumpeter');
+INSERT INTO marcas (id, nombre) VALUES (84, 'Blokees');
+INSERT INTO marcas (id, nombre) VALUES (85, 'Hasbro - Takara Tomy');
+INSERT INTO marcas (id, nombre) VALUES (86, 'Hot toys');
+
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (1, 'Star Wars: The Vintage Collection - Clone Commander Rex "Brocca Mission" (The Bad Batch)', 
+'Figura Clone Commander
+
+Mide Aprox. 9 cm
+
+Hecho en PVC
+
+Multiples articulaciones 
+
+Incluye accesorios
+
+Fabricado por Hasbro', 99 , 68 ,29);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (2, 'ReAction: Godzilla - Kaiju Blind Box Series 2 Silver Screen',
+'Figura Godzilla
+
+Mide Aprox. 9 cm
+
+Hecho en PVC
+
+Surtido aleatorio
+
+Fabricado por Super7', 79 , 80 ,30);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (3, 'Bugatti Divo Gris (Luces y Sonido) 1/30',
+'Escala 1/30
+
+Mide Aprox. 14 cm
+
+Diecast (partes plásticas y metálicas)
+
+Alto detalle
+
+Abre puertas 
+
+Incluye luces y sonidos
+
+Fabricado por Jinchejiang', 69 , 12 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (4, 'Bugatti Divo Negro (Luces y Sonido) 1/30',
+'Escala 1/30
+
+Mide Aprox. 14 cm
+
+Diecast (partes plásticas y metálicas)
+
+Alto detalle
+
+Abre puertas 
+
+Incluye luces y sonidos
+
+Fabricado por Jinchejiang', 69 , 12 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (5, 'Bugatti Divo Rojo (Luces y Sonido) 1/30',
+'Escala 1/30
+
+Mide Aprox. 14 cm
+
+Diecast (partes plásticas y metálicas)
+
+Alto detalle
+
+Abre puertas 
+
+Incluye luces y sonidos
+
+Fabricado por Jinchejiang', 69 , 12 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (6, 'Land Rover Defender Verde (Luces y Sonido) 1/30',
+'Escala 1/30
+
+Mide Aprox. 14 cm
+
+Diecast (partes plásticas y metálicas)
+
+Alto detalle
+
+Abre puertas 
+
+Incluye luces y sonidos
+
+Fabricado por Jinchejiang', 69 , 12 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (7, 'Porsche Macan Negro (Luces y Sonido) 1/30',
+'Escala 1/30
+
+Mide Aprox. 14 cm
+
+Diecast (partes plásticas y metálicas)
+
+Alto detalle
+
+Abre puertas 
+
+Incluye luces y sonidos
+
+Fabricado por Jinchejiang', 69 , 12 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (8, 'Fast & Furious - 2021 Dodge Charger SRT Hellcat 1/32',
+'Escala 1/32
+
+Mide Aprox. 13 cm
+
+Diecast (partes plásticas y metálicas)
+
+Altamente detallado 
+
+Abre puertas
+
+Fabricado por Jada Toys ', 69 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (9, 'Fast & Furious - Brian''s Subaru Impreza WRX STI 1/32',
+'Escala 1/32
+
+Mide 13 cm
+
+Diecast
+
+Fabricado por Jada Toys', 79 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (10, 'Fast & Furious Presents: Hobbs & Shaw (2019) - Shaw''s McLaren 720S 1/32',
+'Escala 1/32
+
+Mide 13 cm
+
+Diecast
+
+Fabricado por Jada Toys', 79 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (11, 'Fast & Furious X: 2006 Dodge Charger 1/32',
+'Escala 1/32
+
+Mide 13 cm
+
+Diecast
+
+Fabricado por Jada Toys', 79 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (12, 'Fast & Furious - Dom''s 1970 Plymouth Road Runner 1/32',
+'Escala 1/32
+
+Mide Aprox. 13 cm
+
+Diecast (partes plásticas y metálicas)
+
+Fabricadopor Jada Toys', 79 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (13, 'Fast & Furious 9: The Fast Saga - 2020 Jeep Gladiator 1/32',
+'Escala 1/32 
+
+Mide Aprox. 13 cm
+
+Diecast (partes plásticas y metálicas)
+
+Abre puertas
+
+Interior detallado
+
+Neumáticos de goma de rodadura suave
+
+Fabricado por Jada Toys', 79 , 11 , 3)
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (14, 'Fast & Furious - Roman''s Ford Mustang 1/32',
+'Escala 1/32
+
+Mide 13 cm
+
+Diecast
+
+Abre puertas, llantas de caucho', 79 , 11 , 3)
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (15, 'Fast & Furious Brian''s Nissan GT-R (R35) Ben Sopra 1/32',
+'Escala 1/32
+
+Mide 13 cm
+
+Diecast
+
+Fabricado por Jada Toys', 79 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (16, 'Hollywood Rides Transformers: Optimus Prime 1/32',
+'Escala 1/32
+
+Mide 14 cm
+
+Diecast
+
+No transformable', 79 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (17, 'Transformers Western Star Optimus Prime 1/32',
+'Escala 1/32
+
+Mide 14 cm
+
+Diecast
+
+No transformable
+
+Fabricado por Jada Toys', 79 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (18, 'F1 Red Bull Racing RB19 #1 (2023) & Max Verstappen 1/24',
+'Escala 1/24
+
+Mide Aprox. 20 cm
+
+Diecast (partes plásticas y metálicas)
+
+Incluye piloto
+
+Neumáticos de goma
+
+Fabricado por Bburago.', 349 , 37 , 14);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (19, 'Monopoly - 1939 Chevrolet Master Deluxe & Mr. Monopoy 1/24',
+'Escala 1/24
+
+Mide Aprox. 20 cm
+
+Diecast (partes plásticas y metálicas)
+
+Altamente detallado 
+
+Abre puertas y capó
+
+Fabricado por Jada Toys ', 279 , 11 , 3);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (20, 'DC Multiverse Batman v Superman: Dawn of Justice - Knightmare Batman',
+'Características del producto
+Escala de 7 pulgadas (17,78 cm)
+Hecho de plástico
+Diseñado con Ultra Articulación con hasta 22 partes móviles para una gama completa de poses y juegos. 
+Muy detallado', 139 , 28 , 31);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (21, 'DC Multiverse Batman v Superman: Dawn of Justice - Batman (Armored Suit)',
+'Características del producto
+Escala de 7 pulgadas (17,78 cm)
+Fabricado en plástico y tela.
+Diseñado con Ultra Articulación con hasta 22 partes móviles para una gama completa de poses y juegos. 
+Muy detallado.', 139 , 28 , 31);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (22, 'DC Multiverse Batman v Superman: Dawn of Justice - Wonder Woman',
+'Características del producto
+Escala de 7 pulgadas (17,78 cm)
+Hecho de plástico
+Diseñado con Ultra Articulación con hasta 22 partes móviles para una gama completa de poses y juegos. 
+Muy detallado.', 139 , 28 , 31);
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (23, 'Transformers: Legacy United Deluxe Class Origin Bumblebee',
+'Características del producto
+5,5 pulgadas (13,97 cm)
+Hecho de plástico
+Inspirado en el primer episodio de la serie animada G1
+Clase Deluxe
+Completamente articulado
+Convierte entre los modos robot y aerodeslizador cybertroniano en 23 pasos 
+Muy detallado.', 139 , 85 , 31);	
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (24, 'The Amazing Spider-Man (Collector Edition) 1/6',
+'Basada en la apariencia de Peter Parker / Spider-Man de Andrew Garfield en la película, la figura coleccionable a escala 1/6 meticulosamente elaborada presenta una escultura de cabeza de Peter Parker', 1799 , 86 , 31);	
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (25, 'The Amazing Spider-Man (Deluxe Edition) 1/6',
+'La versión Deluxe ofrece a los fanáticos una opción de exhibición adicional con una base de figura de diorama con iluminación LED exclusiva, que replica la escena de batalla final de Spider-Man vs. Lizard en la parte superior del techo de la Torre Oscorp.', 1999 , 86 , 31);	
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (26, 'Venom "Marvel Comics" 1/6',
+'Sideshow y Hot Toys están encantados de presentar la impresionante figura coleccionable de Venom a sexta escala, inspirada en el icónico antihéroe de Marvel Comics', 2399, 86 , 31);	
+
+INSERT INTO productos (id, nombre,  descripcion, precio, id_marca , id_categoria ) VALUES (27, 'Spider-Man No Way Home” Spider- Man (New Red and Blue Suit) (Deluxe Version) 1/6',
+'Sideshow y Hot Toys presentan la figura de escala 1/6 de Spider-Man (nuevo traje rojo y azul) (versión Deluxe) con una base de diorama en la azotea solo en la versión Deluxe.', 1999, 86 , 31);	
+
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (1,1,'/imagenes_productos/Producto1-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (2,1,'/imagenes_productos/Producto1-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (3,1,'/imagenes_productos/Producto1-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (4,1,'/imagenes_productos/Producto1-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (5,1,'/imagenes_productos/Producto1-5.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (6,2,'/imagenes_productos/Producto2-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (7,2,'/imagenes_productos/Producto2-2.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (8,3,'/imagenes_productos/Producto3-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (9,3,'/imagenes_productos/Producto3-2.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (10,4,'/imagenes_productos/Producto4-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (11,4,'/imagenes_productos/Producto4-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (12,4,'/imagenes_productos/Producto4-3.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (13,5,'/imagenes_productos/Producto5-1.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (14,6,'/imagenes_productos/Producto6-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (15,6,'/imagenes_productos/Producto6-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (16,6,'/imagenes_productos/Producto6-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (17,6,'/imagenes_productos/Producto6-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (18,6,'/imagenes_productos/Producto6-5.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (19,7,'/imagenes_productos/Producto7-1.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (20,8,'/imagenes_productos/Producto8-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (21,8,'/imagenes_productos/Producto8-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (22,8,'/imagenes_productos/Producto8-3.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (23,9,'/imagenes_productos/Producto9-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (24,9,'/imagenes_productos/Producto9-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (25,9,'/imagenes_productos/Producto9-3.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (26,10,'/imagenes_productos/Producto10-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (27,10,'/imagenes_productos/Producto10-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (28,10,'/imagenes_productos/Producto10-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (29,10,'/imagenes_productos/Producto10-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (30,10,'/imagenes_productos/Producto10-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (31,10,'/imagenes_productos/Producto10-6.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (32,11,'/imagenes_productos/Producto11-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (33,11,'/imagenes_productos/Producto11-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (34,11,'/imagenes_productos/Producto11-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (35,11,'/imagenes_productos/Producto11-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (36,11,'/imagenes_productos/Producto11-5.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (37,12,'/imagenes_productos/Producto12-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (38,12,'/imagenes_productos/Producto12-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (39,12,'/imagenes_productos/Producto12-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (40,12,'/imagenes_productos/Producto12-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (41,12,'/imagenes_productos/Producto12-5.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (42,13,'/imagenes_productos/Producto13-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (43,13,'/imagenes_productos/Producto13-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (44,13,'/imagenes_productos/Producto13-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (45,13,'/imagenes_productos/Producto13-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (46,13,'/imagenes_productos/Producto13-5.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (47,14,'/imagenes_productos/Producto14-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (48,14,'/imagenes_productos/Producto14-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (49,14,'/imagenes_productos/Producto14-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (50,14,'/imagenes_productos/Producto14-4.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (51,15,'/imagenes_productos/Producto15-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (52,15,'/imagenes_productos/Producto15-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (53,15,'/imagenes_productos/Producto15-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (54,15,'/imagenes_productos/Producto15-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (55,15,'/imagenes_productos/Producto15-5.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (56,16,'/imagenes_productos/Producto16-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (57,16,'/imagenes_productos/Producto16-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (58,16,'/imagenes_productos/Producto16-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (59,16,'/imagenes_productos/Producto16-4.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (60,17,'/imagenes_productos/Producto17-1.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (61,18,'/imagenes_productos/Producto18-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (62,18,'/imagenes_productos/Producto18-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (63,18,'/imagenes_productos/Producto18-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (64,18,'/imagenes_productos/Producto18-4.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (65,19,'/imagenes_productos/Producto19-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (66,19,'/imagenes_productos/Producto19-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (67,19,'/imagenes_productos/Producto19-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (68,19,'/imagenes_productos/Producto19-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (69,19,'/imagenes_productos/Producto19-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (70,19,'/imagenes_productos/Producto19-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (71,19,'/imagenes_productos/Producto19-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (72,20,'/imagenes_productos/Producto20-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (73,20,'/imagenes_productos/Producto20-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (74,20,'/imagenes_productos/Producto20-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (75,20,'/imagenes_productos/Producto20-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (76,20,'/imagenes_productos/Producto20-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (77,20,'/imagenes_productos/Producto20-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (78,20,'/imagenes_productos/Producto20-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (79,21,'/imagenes_productos/Producto21-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (80,21,'/imagenes_productos/Producto21-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (81,21,'/imagenes_productos/Producto21-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (82,21,'/imagenes_productos/Producto21-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (83,21,'/imagenes_productos/Producto21-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (84,21,'/imagenes_productos/Producto21-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (85,21,'/imagenes_productos/Producto21-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (86,22,'/imagenes_productos/Producto22-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (87,22,'/imagenes_productos/Producto22-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (88,22,'/imagenes_productos/Producto22-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (89,22,'/imagenes_productos/Producto22-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (90,22,'/imagenes_productos/Producto22-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (91,22,'/imagenes_productos/Producto22-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (92,22,'/imagenes_productos/Producto22-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (93,23,'/imagenes_productos/Producto23-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (94,23,'/imagenes_productos/Producto23-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (95,23,'/imagenes_productos/Producto23-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (96,23,'/imagenes_productos/Producto23-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (97,23,'/imagenes_productos/Producto23-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (98,23,'/imagenes_productos/Producto23-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (99,23,'/imagenes_productos/Producto23-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (100,24,'/imagenes_productos/Producto24-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (101,24,'/imagenes_productos/Producto24-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (102,24,'/imagenes_productos/Producto24-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (103,24,'/imagenes_productos/Producto24-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (104,24,'/imagenes_productos/Producto24-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (105,24,'/imagenes_productos/Producto24-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (106,24,'/imagenes_productos/Producto24-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (107,25,'/imagenes_productos/Producto25-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (108,25,'/imagenes_productos/Producto25-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (109,25,'/imagenes_productos/Producto25-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (110,25,'/imagenes_productos/Producto25-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (111,25,'/imagenes_productos/Producto25-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (112,25,'/imagenes_productos/Producto25-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (113,25,'/imagenes_productos/Producto25-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (114,26,'/imagenes_productos/Producto26-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (115,26,'/imagenes_productos/Producto26-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (116,26,'/imagenes_productos/Producto26-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (117,26,'/imagenes_productos/Producto26-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (118,26,'/imagenes_productos/Producto26-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (119,26,'/imagenes_productos/Producto26-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (120,26,'/imagenes_productos/Producto26-7.jpg');
+
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (121,27,'/imagenes_productos/Producto27-1.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (122,27,'/imagenes_productos/Producto27-2.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (123,27,'/imagenes_productos/Producto27-3.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (124,27,'/imagenes_productos/Producto27-4.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (125,27,'/imagenes_productos/Producto27-5.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (126,27,'/imagenes_productos/Producto27-6.jpg');
+INSERT INTO imagenesproductos(id,id_producto,url) VALUES (127,27,'/imagenes_productos/Producto27-7.jpg');

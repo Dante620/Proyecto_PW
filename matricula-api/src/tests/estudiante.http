@@ -2,7 +2,7 @@ GET http://localhost:4001/compra/usuario/1
 
 ####
 
-GET http://localhost:4001/compra
+GET http://localhost:4001/producto
 
 ####
 

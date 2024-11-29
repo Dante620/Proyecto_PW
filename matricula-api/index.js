@@ -7,6 +7,9 @@ import producto from './src/models/producto.js';
 import compra from './src/models/compra.js';
 import imagenesproducto from './src/models/imagenesproducto.js';
 import pedido from './src/models/pedido.js';
+import categoria from './src/models/categoria.js';
+import marca from './src/models/marca.js';
+
 async function main() {
     try {
         const init = process.argv[2];  // Obtener argumento de línea de comandos
@@ -14,12 +17,15 @@ async function main() {
         // Sincronizar los modelos en el orden correcto (primero Usuario, luego Carrito)
 // eliminar tablas
 await usuario.sync(syncOptions);  // Primero, asegúrate de crear la tabla de usuario
-await carrito.sync(syncOptions); 
+await marca.sync(syncOptions);
+await categoria.sync(syncOptions); 
 await producto.sync(syncOptions);
+await carrito.sync(syncOptions); 
 await itemcarrito.sync(syncOptions);
 await compra.sync(syncOptions);
 await imagenesproducto.sync(syncOptions);
 await pedido.sync(syncOptions); 
+
 
         console.log('Database synchronized');
 

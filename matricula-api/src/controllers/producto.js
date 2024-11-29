@@ -39,6 +39,20 @@ const remove = async (req, res) => {
     return res.status(200).json(result);
 }
 
-const controller = { findAll, create, findOne, update, remove }
+// Suponiendo que tu controlador de productos en el backend está ajustado de esta forma:
+const findByCategoria = async (req, res) => {
+    const { categoria } = req.query; // Aquí obtenemos el nombre de la categoría desde la query
+  
+    try {
+      // Aquí buscas todos los productos relacionados con la categoría
+      const productos = await productoRepository.findByCategoria(categoria);
+      return res.status(200).json(productos);
+    } catch (error) {
+      return res.status(500).json({ error: 'Error al obtener los productos' });
+    }
+  }
+  
+
+const controller = { findAll, create, findOne, update, remove , findByCategoria}
 
 export default controller;

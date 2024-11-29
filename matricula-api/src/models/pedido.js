@@ -41,6 +41,8 @@ const pedido = sequelize.define('pedido', {
         allowNull: false
     },
     
+}, {
+    timestamps: false // Deshabilita createdAt y updatedAt
 });
 
 // Relaciones

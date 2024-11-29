@@ -30,6 +30,8 @@ const compra = sequelize.define('compra', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+}, {
+    timestamps: false // Deshabilita createdAt y updatedAt
 });
 
 // Relaciones

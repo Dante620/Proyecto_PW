@@ -1,5 +1,4 @@
-GET http://localhost:4001/matricula
-
+GET http://localhost:4001/marca
 ####
 
 GET http://localhost:4001/curso/4
