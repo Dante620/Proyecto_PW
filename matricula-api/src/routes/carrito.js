@@ -6,6 +6,8 @@ const router = express.Router();
 // Ruta para obtener todos los carritos de un usuario
 router.get('/:id', controller.findAll);
 
+router.get('/', controller.findAll2);
+
 // Ruta para obtener el carrito activo de un usuario
 router.get('/active/:id', controller.findOne);
 

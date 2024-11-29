@@ -39,7 +39,12 @@ const remove = async (req, res) => {
     return res.status(200).json(result);
    
 }
+const findAll2 = async (req, res) => {
+    const usuario = await repository.findAllCarts();
 
-const controller = { findAll, create, findOne, update, remove }
+    return res.status(200).json(usuario);
+}
+
+const controller = { findAll2, findAll, create, findOne, update, remove }
 
 export default controller;

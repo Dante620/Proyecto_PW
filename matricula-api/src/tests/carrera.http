@@ -1,4 +1,4 @@
-GET http://localhost:4001/marca
+GET https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario
 
 ####
 

@@ -33,6 +33,14 @@ class CarritoRepository extends RepositoryBase {
             return null;
         }
     }
+    async findAllCarts() {
+        try {
+            return await this.model.findAll();
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
 
     // Obtener el carrito activo de un usuario
     async getActiveCart(userId) {

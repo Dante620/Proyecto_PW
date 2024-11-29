@@ -16,6 +16,9 @@ async function main() {
         const syncOptions = init ? { force: true } : { force: false };  // Establecer opciones de sincronización
         // Sincronizar los modelos en el orden correcto (primero Usuario, luego Carrito)
 // eliminar tablas
+
+
+
 await usuario.sync(syncOptions);  // Primero, asegúrate de crear la tabla de usuario
 await marca.sync(syncOptions);
 await categoria.sync(syncOptions); 
@@ -30,9 +33,11 @@ await pedido.sync(syncOptions);
         console.log('Database synchronized');
 
         // Iniciar el servidor
-        app.listen(4001, () => {
-            console.log('Server is running on port 4001');
+        const PORT = process.env.PORT || 8080; // Usa el puerto proporcionado por Azure
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
         });
+        
 
     } catch (error) {
         console.error('Error starting server:', error);
