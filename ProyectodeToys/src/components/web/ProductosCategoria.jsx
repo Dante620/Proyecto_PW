@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 import './ProductosCategoria.css';
 
 const ProductosCategoria = () => {
@@ -8,6 +9,8 @@ const ProductosCategoria = () => {
     const [productos, setProductos] = useState([]);
     const [marcas, setMarcas] = useState([]);
     const [imagenes, setImagenes] = useState([]); // Estado para imágenes
+    const [showSearchModal, setShowSearchModal] = useState(false);
+
 
     // Cargar las categorías
     const cargarCategorias = async () => {
@@ -95,17 +98,15 @@ const ProductosCategoria = () => {
 
     return (
         <>
-            <header id="main-header">
-                <a href="/" id="logo-link">
+             <header id="main-header">
+                <a href='/App.jsx' id="logo-link">
                     <img src="../../imagenes/Imagen1.jpg" alt="Logo" id="logo-image" />
                 </a>
                 <ul id="menu">
-                    <li className="menu-item">
-                        <a href="/categorias" className="menu-link">📁 CATEGORÍAS</a>
-                    </li>
-                    <li className="menu-item">
-                        <a href="/categorias/Pre-venta" className="menu-link">🔜 PRE-VENTA</a>
-                    </li>
+                <a href="/categorias" className="menu-link">📁 CATEGORÍAS</a>
+                <li class="menu-item">
+                <a href="/categorias/Pre-venta" className="menu-link">🔜 PRE-VENTA</a>
+                 </li>
                     <li className="menu-item">💰 MASTER POINTS</li>
                     <li className="menu-item">🤖 CLUB TOYS MASTER</li>
                     <li className="menu-item">🙂 RESEÑAS</li>
@@ -120,10 +121,25 @@ const ProductosCategoria = () => {
                             <img src="../../imagenes/Imagen30.jpg" alt="User Icon" className="social-icon" />
                         </Link>
                     </li>
+                    
                     <li><img src="../../imagenes/Imagen31.jpg" alt="Social 3" className="social-icon" /></li>
                     <li><img src="../../imagenes/Imagen32.jpg" alt="Social 4" className="social-icon" /></li>
                 </ul>
             </header>
+            {showSearchModal && (
+                <div className="search-overlay">
+                    <div className="search-bar">
+                        <input
+                            type="text"
+                            placeholder="Búsqueda"
+                            className="search-bar-input"
+                        />
+                        <button className="search-bar-close" onClick={() => setShowSearchModal(false)}>
+                            X
+                        </button>
+                    </div>
+                </div>
+            )}
             <div style={{ padding: '20px' }}>
                 <h2>{nombreCategoria}</h2>
                 <div className="productos-grid">
