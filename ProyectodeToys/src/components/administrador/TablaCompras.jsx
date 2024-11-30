@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './ComprasTabla.css'; // Reusing the same CSS file for consistency
+import './ComprasTabla.css';
 
 const CompraComponent = () => {
   const [compras, setCompras] = useState([]);
-  const [carritoItems, setCarritoItems] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentCompra, setCurrentCompra] = useState({
     id_usuario: '',
-    id_carrito: ''
+    id_carrito: '',
+    tipoPago: '',
+    direccion: ''
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isItemsModalOpen, setIsItemsModalOpen] = useState(false);
 
   // Fetch all compras
   const findAll = async () => {
@@ -24,60 +24,43 @@ const CompraComponent = () => {
     }
   };
 
-  // Fetch carrito total
-  const fetchCarritoTotal = async (carritoId) => {
+  // Eliminar Compra
+  const eliminarCompra = async (id) => {
     try {
-      const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/carrito/${carritoId}`);
+      const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra/${id}`, {
+        method: 'DELETE',
+      });
+
       if (!response.ok) throw new Error('Network response was not ok');
-      const data = await response.json();
-      return data.total;
+
+      alert('Compra eliminada exitosamente.');
+      findAll();
     } catch (error) {
-      console.error('Error fetching carrito total:', error);
-      alert('Failed to fetch carrito total');
-      return 0;
+      console.error('Error eliminando la compra:', error);
+      alert('No se pudo eliminar la compra.');
     }
   };
 
-  // Fetch carrito items
-  const fetchCarritoItems = async (carritoId) => {
-    try {
-      const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/itemcarrito/${carritoId}`);
-      if (!response.ok) throw new Error('Network response was not ok');
-      const data = await response.json();
-      setCarritoItems(data);
-      setIsItemsModalOpen(true);
-    } catch (error) {
-      console.error('Error fetching carrito items:', error);
-      alert('Failed to fetch carrito items');
-    }
-  };
-
-  // Create a new compra
+  // Crear una nueva compra
   const create = async () => {
     try {
-      // Fetch the total from the carrito
-      const total = await fetchCarritoTotal(currentCompra.id_carrito);
-
-      // Prepare compra data with total
-      const compraData = {
-        ...currentCompra,
-        total: total
-      };
-
       const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(compraData)
+        body: JSON.stringify(currentCompra),
       });
+
       if (!response.ok) throw new Error('Network response was not ok');
+
+      alert('Compra creada exitosamente.');
       findAll();
       resetForm();
       setIsModalOpen(false);
     } catch (error) {
-      console.error('Error creating compra:', error);
-      alert('Failed to create compra');
+      console.error('Error creando la compra:', error);
+      alert('No se pudo crear la compra.');
     }
   };
 
@@ -85,7 +68,9 @@ const CompraComponent = () => {
   const resetForm = () => {
     setCurrentCompra({
       id_usuario: '',
-      id_carrito: ''
+      id_carrito: '',
+      tipoPago: '',
+      direccion: ''
     });
   };
 
@@ -94,7 +79,7 @@ const CompraComponent = () => {
     const { name, value } = e.target;
     setCurrentCompra((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -104,21 +89,22 @@ const CompraComponent = () => {
   }, []);
 
   return (
-    <div className="pedido-container">
-      <div className="pedido-header">
+    <div className="compra-container">
+      <div className="compra-header">
         <h1>Compras</h1>
         <button onClick={() => setIsModalOpen(true)} className="btn-add">
           Agregar Nueva Compra
         </button>
       </div>
 
-      <table className="pedido-table">
+      <table className="compra-table">
         <thead>
           <tr>
             <th>ID</th>
             <th>ID Usuario</th>
             <th>ID Carrito</th>
-            <th>Total</th>
+            <th>Método de Pago</th>
+            <th>Dirección</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -128,14 +114,21 @@ const CompraComponent = () => {
               <td>{compra.id}</td>
               <td>{compra.id_usuario}</td>
               <td>{compra.id_carrito}</td>
-              <td>${compra.total}</td>
+              <td>{compra.tipoPago}</td>
+              <td>{compra.direccion}</td>
               <td>
                 <div className="action-buttons">
-                <button
+                  <button
                     onClick={() => (window.location.href = `/admin/itemcarrito/${compra.id_carrito}`)}
                     className="btn-view"
                   >
                     Ver Items
+                  </button>
+                  <button
+                    onClick={() => eliminarCompra(compra.id)}
+                    className="btn-delete"
+                  >
+                    Eliminar Compra
                   </button>
                 </div>
               </td>
@@ -144,11 +137,10 @@ const CompraComponent = () => {
         </tbody>
       </table>
 
-      {/* Nueva Compra Modal */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2>Nueva Compra</h2>
+            <h2>Nuevo Compra</h2>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -177,6 +169,33 @@ const CompraComponent = () => {
                   required
                 />
               </div>
+              <div className="form-group">
+                <label htmlFor="tipoPago">Método de Pago</label>
+                <select
+                  id="tipoPago"
+                  name="tipoPago"
+                  value={currentCompra.tipoPago}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="">Seleccione un método de pago</option>
+                  <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                  <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+                  <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                  <option value="PayPal">PayPal</option>
+                  <option value="Efectivo">Efectivo</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="direccion">Dirección</label>
+                <input
+                  id="direccion"
+                  name="direccion"
+                  value={currentCompra.direccion}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
               <div className="modal-actions">
                 <button
                   type="button"
@@ -193,9 +212,6 @@ const CompraComponent = () => {
           </div>
         </div>
       )}
-
-      
-        
     </div>
   );
 };

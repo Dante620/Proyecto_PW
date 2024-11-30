@@ -3,8 +3,10 @@ import './ProductoTabla.css';
 
 const ProductoComponent = () => {
   const [productos, setProductos] = useState([]);
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [marcas, setMarcas] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [currentProducto, setCurrentProducto] = useState({
     id: null,
     nombre: '',
@@ -32,6 +34,7 @@ const ProductoComponent = () => {
       const marcasData = await marcasResponse.json();
 
       setProductos(productosData);
+      setProductosFiltrados(productosData);
       setCategorias(categoriasData);
       setMarcas(marcasData);
     } catch (error) {
@@ -39,6 +42,19 @@ const ProductoComponent = () => {
       alert(error.message);
     }
   };
+
+  // Filtrar productos por término de búsqueda
+  const handleSearch = (e) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+    
+    const filtered = productos.filter(producto => 
+      producto.nombre.toLowerCase().includes(term)
+    );
+    
+    setProductosFiltrados(filtered);
+  };
+
   // Find one product by ID
   const findOne = async (id) => {
     try {
@@ -55,82 +71,75 @@ const ProductoComponent = () => {
   };
 
   // Create a new product
-const create = async () => {
-  try {
-    // Find the maximum existing ID and increment
-    const maxId = productos.length > 0 
-      ? Math.max(...productos.map(p => p.id)) 
-      : 0;
-    
-    const newProducto = {
-      ...currentProducto,
-      id: maxId + 1
-    };
-
-    const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newProducto)
-    });
-    if (!response.ok) throw new Error('Network response was not ok');
-    findAll();
-    resetForm();
-    setIsModalOpen(false);
-  } catch (error) {
-    console.error('Error creating product:', error);
-    alert('Failed to create product');
-  }
-};
-
-  // Update an existing product
-  const update = async () => {
+  const create = async () => {
     try {
-        const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(currentProducto)
-        });
-        if (!response.ok) throw new Error('Network response was not ok');
-
-        // Actualizar el producto en el estado sin alterar el orden
-        setProductos(productos.map(p => (p.id === currentProducto.id ? currentProducto : p)));
-
-        resetForm();
-        setIsModalOpen(false);
-    } catch (error) {
-        console.error('Error updating product:', error);
-        alert('Failed to update product');
-    }
-};
-  // Remove a product
-  const remove = async (id) => {
-    try {
-      const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto/${id}`, {
-        method: 'DELETE',
+      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...currentProducto,
+          id: null // Let backend generate ID
+        })
       });
       if (!response.ok) throw new Error('Network response was not ok');
-      findAll();
+      
+      // Fetch updated list of products without full page reload
+      const updatedResponse = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
+      const updatedProductos = await updatedResponse.json();
+      
+      setProductos(updatedProductos);
+      setProductosFiltrados(updatedProductos);
+      
+      resetForm();
+      setIsModalOpen(false);
     } catch (error) {
-      console.error('Error deleting product:', error);
-      alert('Failed to delete product');
+      console.error('Error creating product:', error);
+      alert('Failed to create product');
     }
   };
 
-  // Reset form to initial state
-  const resetForm = () => {
-    setCurrentProducto({
-      id: null,
-      nombre: '',
-      descripcion: '',
-      precio: ''
-    });
-    setIsEditing(false);
-  };
+  // Update an existing product
+// Update an existing product
+// Update an existing product
+// Update an existing product
+const update = async () => {
+  try {
+      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(currentProducto)
+      });
+      
+      if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Error updating product: ${errorText}`);
+      }
 
+      // Actualizar el producto en la lista existente
+      const updatedProductos = productos.map(p => 
+          p.id === currentProducto.id ? currentProducto : p
+      );
+
+      setProductos(updatedProductos);
+      
+      // Mantener los filtros actuales
+      const updatedFiltrados = updatedProductos.filter(producto => 
+          producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      
+      setProductosFiltrados(updatedFiltrados);
+      
+      resetForm();
+      setIsModalOpen(false);
+  } catch (error) {
+      console.error('Error updating product:', error);
+      alert(`No se pudo actualizar el producto: ${error.message}`);
+  }
+};
   // Open modal for adding/editing product
   const openModal = (producto = null) => {
     if (producto) {
@@ -150,12 +159,23 @@ const create = async () => {
       [name]: value
     }));
   };
-
+  const resetForm = () => {
+    setCurrentProducto({
+        id: null,
+        nombre: '',
+        descripcion: '',
+        precio: '',
+        id_categoria: '',
+        id_marca: ''
+    });
+    setIsEditing(false);
+};
   // Load products on component mount
  
   useEffect(() => {
     findAll();
   }, []);
+
 
   const getCategoryName = (id_categoria) => {
     const categoria = categorias.find(cat => cat.id === id_categoria);
@@ -177,6 +197,17 @@ const create = async () => {
         </button>
       </div>
 
+      {/* Barra de búsqueda */}
+      <div className="search-container">
+        <input 
+          type="text" 
+          placeholder="Buscar producto por nombre" 
+          className="search-input"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </div>
+
       <table className="producto-table">
         <thead>
           <tr>
@@ -190,7 +221,7 @@ const create = async () => {
           </tr>
         </thead>
         <tbody>
-          {productos.map((producto) => (
+          {productosFiltrados.map((producto) => (
             <tr key={producto.id}>
               <td>{producto.id}</td>
               <td>{producto.nombre}</td>

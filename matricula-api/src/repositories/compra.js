@@ -1,6 +1,7 @@
 import RepositoryBase from "./base.js";
 import CarritoRepository from "./carrito.js";
 import carrito from "../models/carrito.js";
+import compra from "../models/compra.js";
 class compraRepository extends RepositoryBase {
  constructor(model) {
      super(model);
@@ -8,12 +9,14 @@ class compraRepository extends RepositoryBase {
  }
 
     // Crear un compra nuevo
-    async createcompra(userId, cartId) {
+    async createcompra(userId, cartId, tipoPago, direccion) {
         try {
             const total = await this.carritoRepository.getTotal(cartId);
             return await this.model.create({
                 id_usuario: userId,
                 id_carrito: cartId,
+                tipoPago: tipoPago,
+                direccion: direccion,
                 total: total
             });
         } catch (error) {

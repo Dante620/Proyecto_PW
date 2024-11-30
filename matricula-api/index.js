@@ -19,6 +19,7 @@ async function main() {
 
 
 
+
 await usuario.sync(syncOptions);  // Primero, asegúrate de crear la tabla de usuario
 await marca.sync(syncOptions);
 await categoria.sync(syncOptions); 

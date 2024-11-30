@@ -25,6 +25,16 @@ const compra = sequelize.define('compra', {
             key: 'id'
         }
     },
+
+    tipoPago: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    direccion: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     
     total: {
         type: DataTypes.INTEGER,

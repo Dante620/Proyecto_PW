@@ -18,7 +18,7 @@ const Categorias = () => {
     return (
         <>
              <header id="main-header">
-                <a href='/App.jsx' id="logo-link">
+                <a href='/' id="logo-link">
                     <img src="../../imagenes/Imagen1.jpg" alt="Logo" id="logo-image" />
                 </a>
                 <ul id="menu">

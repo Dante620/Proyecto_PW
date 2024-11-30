@@ -6,30 +6,22 @@ GET http://localhost:4001/curso/4
 
 ####
 
-POST https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario
+POST https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario/login
 Content-Type: application/json
 
 {
-       "id": 1,
-        "nombre": "sandra",
-        "apellido": "pedro",
-        "email": "renzo@gmail.com",
-        "password": "123456",
-        "rol": "admin"
-       
-       
-
-
-       
+        "email": "laura@gmail.com",
+        "password":"contr303"
+  
 }
 
 ###
 
-PUT http://localhost:4001/producto
+PUT https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/
 Content-Type: application/json
 
 {
-        "id": 1,
+        "id": 28,
         "nombre": "minecraft"
         
 }

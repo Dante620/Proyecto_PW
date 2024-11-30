@@ -12,7 +12,7 @@ const findAll = async (req, res) => {
 
 const create = async (req, res) => {
     const compra = req.body;
-    const compraCreated = await repository.createcompra(compra.id_usuario, compra.id_carrito);
+    const compraCreated = await repository.createcompra(compra.id_usuario, compra.id_carrito, compra.tipoPago, compra.direccion);
     return res.status(201).json(compraCreated)
 }
 

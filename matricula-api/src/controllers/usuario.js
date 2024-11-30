@@ -39,6 +39,23 @@ const remove = async (req, res) => {
     return res.status(200).json(result);
 }
 
-const controller = { findAll, create, findOne, update, remove }
+const authenticate = async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const user = await repository.authenticateUser(email, password);
+  
+      if (user) {
+        res.json(user); // Si las credenciales son correctas, devolver el usuario
+      } else {
+        res.status(401).json({ error: "Credenciales incorrectas" }); // Si las credenciales no son correctas
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Error del servidor al autenticar el usuario" });
+    }
+  };
+
+const controller = { authenticate,findAll, create, findOne, update, remove }
 
 export default controller;

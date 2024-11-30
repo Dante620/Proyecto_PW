@@ -25,34 +25,37 @@ const PedidoComponent = () => {
   };
 
   // Completar Pedido
-  const completarPedido = async (pedido) => {
-    try {
-      const compraData = {
-        id_usuario: pedido.id_usuario,
-        id_carrito: pedido.id_carrito,
-      };
+ // Completar Pedido
+const completarPedido = async (pedido) => {
+  try {
+    const compraData = {
+      id_usuario: pedido.id_usuario,
+      id_carrito: pedido.id_carrito,
+      tipoPago: pedido.metodoPago, // Convertir metodoPago a tipoPago
+      direccion: pedido.direccion,
+      // El total se calculará automáticamente en el backend como antes
+    };
 
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(compraData),
-      });
+    const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(compraData),
+    });
 
-      if (!response.ok) throw new Error('Network response was not ok');
+    if (!response.ok) throw new Error('Network response was not ok');
 
-      // Eliminar el pedido tras completarlo
-      await eliminarPedido(pedido.id);
+    // Eliminar el pedido tras completarlo
+    await eliminarPedido(pedido.id);
 
-      alert('Pedido completado y añadido a la tabla de compras.');
-      findAll();
-    } catch (error) {
-      console.error('Error completando el pedido:', error);
-      alert('No se pudo completar el pedido.');
-    }
-  };
-
+    alert('Pedido completado y añadido a la tabla de compras.');
+    findAll();
+  } catch (error) {
+    console.error('Error completando el pedido:', error);
+    alert('No se pudo completar el pedido.');
+  }
+};
   // Eliminar Pedido
   const eliminarPedido = async (id) => {
     try {
