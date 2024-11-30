@@ -1,11 +1,99 @@
 import { Link } from 'react-router-dom'; 
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import Header from './Header';
 import './Inicio.css';
 
 const Inicio = () => {
-     const [showSearchModal, setShowSearchModal] = useState(false);
+    const [showSearchModal, setShowSearchModal] = useState(false);
+    const [productos, setProductos] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+    const [imagenesProductos, setImagenesProductos] = useState([]);
 
+    useEffect(() => {
+        // Cargar todas las categorías
+        const fetchCategorias = async () => {
+            try {
+                const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/categoria');
+                const data = await response.json();
+                setCategorias(data);
+            } catch (error) {
+                console.error('Error fetching categorías:', error);
+            }
+        };
+
+        // Cargar todos los productos
+        const fetchProductos = async () => {
+            try {
+                const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
+                const data = await response.json();
+                setProductos(data);
+            } catch (error) {
+                console.error('Error fetching productos:', error);
+            }
+        };
+
+        // Cargar todas las imágenes de productos
+        const fetchImagenesProductos = async () => {
+            try {
+                const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/imagenesproductos');
+                const data = await response.json();
+                setImagenesProductos(data);
+            } catch (error) {
+                console.error('Error fetching imágenes productos:', error);
+            }
+        };
+
+        fetchCategorias();
+        fetchProductos();
+        fetchImagenesProductos();
+    }, []);
+
+    // Función para obtener la imagen de un producto
+    const getProductImage = (productoId) => {
+        const imagenProducto = imagenesProductos.find(img => img.id_producto === productoId);
+        return imagenProducto ? imagenProducto.url : '../../imagenes/default.jpg';
+    };
+
+    // Función para obtener el nombre de la categoría
+    const getCategoriaNombre = (categoriaId) => {
+        const categoria = categorias.find(cat => cat.id === categoriaId);
+        return categoria ? categoria.nombre : 'Categoría';
+    };
+
+    // Secciones predefinidas de productos con lógica de filtrado personalizada
+    const seccionesPredefinidas = [
+        { 
+            id: 1, 
+            titulo: 'NOVEDADES',
+            filtro: (producto) => {
+                // Selecciona algunos productos al azar para novedades
+                return Math.random() < 0.2; // 20% de probabilidad de ser seleccionado
+            }
+        },
+        { 
+            id: 2, 
+            titulo: 'CATEGORIAS',
+            filtro: (producto) => producto.id_categoria === 2 // Suponiendo que 2 es el ID de la categoría general
+        },
+        { 
+            id: 3, 
+            titulo: 'PRODUCTOS A MENOS DE S/.100',
+            filtro: (producto) => parseFloat(producto.precio) < 100
+        },
+        { 
+            id: 4, 
+            titulo: 'PRODUCTOS MAS VENDIDOS',
+            filtro: (producto) => producto.id_categoria === 4 // Suponiendo que 4 es el ID de productos más vendidos
+        },
+        { 
+            id: 5, 
+            titulo: 'PRE-VENTAS',
+            filtro: (producto) => {
+                const categoria = categorias.find(cat => cat.nombre === 'Pre-venta');
+                return categoria ? producto.id_categoria === categoria.id : false;
+            }
+        }
+    ];
 
     return (
         <>
@@ -24,6 +112,7 @@ const Inicio = () => {
                     </div>
                 </div>
             )}
+
             <div className="banner-section">
                 <ul>
                     <li><img src="../../imagenes/Arriba/Imagen2.jpg" alt="Banner 1" /></li>
@@ -31,123 +120,102 @@ const Inicio = () => {
                 </ul>
             </div>
 
-            <div className="novedades-section">
-                <h2>NOVEDADES</h2>
-                <ul>
-                    <li><img src="../../imagenes/Novedades/Imagen5.jpg" alt="Novedad 1"></img></li>
-                    <li><img src="../../imagenes/Novedades/Imagen10.jpg" alt="Novedad 2"></img></li>
-                    <li><img src="../../imagenes/Novedades/Imagen11.jpg" alt="Novedad 3"></img></li>
-                    <li><img src="../../imagenes/Novedades/Imagen12.jpg" alt="Novedad 4"></img></li>
-                    <li><img src="../../imagenes/Novedades/Imagen13.jpg" alt="Novedad 5"></img></li>
-                    <li><img src="../../imagenes/Novedades/Imagen14.jpg" alt="Novedad 6"></img></li>
-                </ul>
-            </div>
+            {seccionesPredefinidas.map((seccion) => (
+                <div key={seccion.id} className={`productos-section ${seccion.titulo.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <h2>{seccion.titulo}</h2>
+                    <ul>
+                        {productos
+                            .filter(seccion.filtro)
+                            .map((producto) => (
+                                <li key={producto.id}>
+                                    <Link 
+                                        to={`/productos/${encodeURIComponent(producto.nombre)}`} 
+                                        className="product-link"
+                                    >
+                                        <div className="product-card">
+                                            <img 
+                                                src={getProductImage(producto.id)} 
+                                                alt={producto.nombre} 
+                                            />
+                                            <div className="product-details">
+                                                <h3>{producto.nombre}</h3>
+                                                <p>{producto.descripcion}</p>
+                                                <p>Precio: S/. {producto.precio}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            ))}
 
-            <div class="categorias-section">
-                <button>CATEGORIAS</button>
-                <ul>
-                    <li><img src="../../imagenes/Preorden/Imagen17.jpg" alt="Preorden 1"></img></li>
-                    <li><img src="../../imagenes/Preorden/Imagen18.jpg" alt="Preorden 2"></img></li>
-                    <li><img src="../../imagenes/Preorden/Imagen19.jpg" alt="Preorden 3"></img></li>
-                </ul>
-            </div>
-
-            <div class="productos-section">
-                <h2>PRODUCTOS A MENOS DE S/.100</h2>
-                <ul>
-                    <li><img src="../../imagenes/cien/Imagen20.png" alt="Producto 1"></img></li>
-                    <li><img src="../../imagenes/cien/Imagen21.png" alt="Producto 2"></img></li>
-                    <li><img src="../../imagenes/cien/Imagen22.png" alt="Producto 3"></img></li>
-                    <li><img src="../../imagenes/cien/Imagen23.png" alt="Producto 4"></img></li>
-                    <li><img src="../../imagenes/cien/Imagen24.png" alt="Producto 5"></img></li>
-                </ul>
-            </div>
-
-
-            <div class ="ver-mas">
+            {/* Resto del código permanece igual */}
+            <div className="ver-mas">
                 <button>VER MÁS</button>
                 <ul>
-                    <li><img src="../../imagenes/videos/video 1.png" alt="Video 1"></img></li>
-                    <li><img src="../../imagenes/videos/video 2.png" alt="Video 2"></img></li>
-                    <li><img src="../../imagenes/videos/video 3.png" alt="Video 3"></img></li>
-                    <li><img src="../../imagenes/videos/video 4.png" alt="Video 4"></img></li>
-                    <li><img src="../../imagenes/videos/video 5.png" alt="Video 5"></img></li>
-                    <li><img src="../../imagenes/videos/video 6.png" alt="Video 6"></img></li>
+                    {['1', '2', '3', '4', '5', '6'].map((num) => (
+                        <li key={num}>
+                            <img src={`../../imagenes/videos/video ${num}.png`} alt={`Video ${num}`} />
+                        </li>
+                    ))}
                 </ul>
                 <ul>
-                    <li><img src="../../imagenes/videos/video 7.png" alt="Video 7"></img></li>
-                    <li><img src="../../imagenes/videos/video 8.png" alt="Video 8"></img></li>
-                    <li><img src="../../imagenes/videos/video 5.png" alt="Video 9"></img></li>
-                    <li><img src="../../imagenes/videos/video 9.png" alt="Video 10"></img></li>
-                    <li><img src="../../imagenes/videos/video 10.png" alt="Video 11"></img></li>
-                    <li><img src="../../imagenes/videos/video 11.png" alt="Video 12"></img></li>
+                    {['7', '8', '5', '9', '10', '11'].map((num) => (
+                        <li key={num}>
+                            <img src={`../../imagenes/videos/video ${num}.png`} alt={`Video ${num}`} />
+                        </li>
+                    ))}
                 </ul>
             </div>
 
-            <div class="info">
+            {/* Resto del componente permanece igual */}
+            <div className="info">
                 <section>
-                    <img src="../../imagenes/Imagen12.jpg" alt="Banner"></img>
+                    <img src="../../imagenes/Imagen12.jpg" alt="Banner" />
                 </section>
                 <aside>
                     <h3>Tambien puedes recibir informacion por correo Electronico</h3>
-                    <input type="text" placeholder="Ingrese su correo"></input><button>Enviar</button>
+                    <input type="text" placeholder="Ingrese su correo" />
+                    <button>Enviar</button>
                 </aside>
             </div>
 
-            <div class="productos-mas-vendidos">
-                <h2>PRODUCTOS MAS VENDIDOS</h2>
-                <ul>
-                    <li><img src="../../imagenes/vendidos/Imagen33.jpg" alt="Producto vendido 1"></img></li>
-                    <li><img src="../../imagenes/vendidos/Imagen34.jpg" alt="Producto vendido 2"></img></li>
-                    <li><img src="../../imagenes/vendidos/Imagen35.jpg" alt="Producto vendido 3"></img></li>
-                    <li><img src="../../imagenes/vendidos/Imagen36.jpg" alt="Producto vendido 4"></img></li>
-                    <li><img src="../../imagenes/vendidos/Imagen37.jpg" alt="Producto vendido 5"></img></li>
-                </ul>
-            </div>
-
-            <div class="ver-mas2">
+            <div className="ver-mas2">
                 <button>VER MÁS</button>
                 <ul>
-                    <li><img src="../../imagenes/relleno/Imagen18.jpg" alt="Relleno 1"></img></li>
-                    <li><img src="../../imagenes/relleno/Imagen19.jpg" alt="Relleno 2"></img></li>
-                    <li><img src="../../imagenes/relleno/Imagen20.jpg" alt="Relleno 3"></img></li>
+                    {['18', '19', '20'].map((num) => (
+                        <li key={num}>
+                            <img src={`../../imagenes/relleno/Imagen${num}.jpg`} alt={`Relleno ${num}`} />
+                        </li>
+                    ))}
                 </ul>
             </div>
 
-            <div class="preventas">
-                <h2>PRE-VENTAS</h2>
-                <ul>
-                    <li><img src="../../imagenes/preventas/Imagen21.jpg" alt="Preventa 1"></img></li>
-                    <li><img src="../../imagenes/preventas/Imagen22.jpg" alt="Preventa 2"></img></li>
-                    <li><img src="../../imagenes/preventas/Imagen23.jpg" alt="Preventa 3"></img></li>
-                    <li><img src="../../imagenes/preventas/Imagen24.jpg" alt="Preventa 4"></img></li>
-                    <li><img src="../../imagenes/preventas/Imagen25.jpg" alt="Preventa 5"></img></li>
-                </ul>
-            </div>
-
-            <div class="ver-mas3">
+            <div className="ver-mas3">
                 <button>VER MÁS</button>
             </div>
 
-            <div class ="pie-pagina">
+            <div className="pie-pagina">
                 <ul>
                     <li>
                         <ol>
-                            <li><img src="../../imagenes/Imagen26.jpg" alt="Location"></img></li>
+                            <li><img src="../../imagenes/Imagen26.jpg" alt="Location" /></li>
                             <li>Av.La Paz 138, Miraflores - Lima</li>
                             <li>01-4001815 / 966 323 587</li>
                             <li>contacto@toymaster.pe</li>
                         </ol>
                     </li>
                     <li>
-                        <ol class="sub1">
+                        <ol className="sub1">
                             <li>Sobre Toys Master</li>
                             <li>Programa de recompensa Master Points</li>
                             <li>Acerca de las preventas</li>
                         </ol>
                     </li>
                     <li>
-                        <ol class="sub1"> 
+                        <ol className="sub1"> 
                             <li>Libro de Reclamaciones Virtual</li>
                             <li>Términos del Servicio</li>
                             <li>Política de Privacidad de Datos</li>
@@ -157,8 +225,6 @@ const Inicio = () => {
                     </li>
                 </ul>
             </div>
-
-
         </>
     );
 };

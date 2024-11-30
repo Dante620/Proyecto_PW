@@ -1,4 +1,4 @@
-GET https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario
+GET https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto
 
 ####
 
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ###
 
-PUT https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/
+PUT https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/p
 Content-Type: application/json
 
 {
@@ -28,4 +28,4 @@ Content-Type: application/json
 
 ####
 
-DELETE http://localhost:4001/carrera/1
+DELETE https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto/28

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './components/web/Header';
+import './crear.css';
 const CrearCuenta = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [nombre, setNombre] = useState('');
@@ -108,6 +109,9 @@ const handleSubmit = async (e) => {
     setShowModal(false);
     navigate('/login');
   };
+  const handleVolver = () => {
+    navigate('/login');
+  };
 
   return (
     <div className="header">
@@ -163,6 +167,13 @@ const handleSubmit = async (e) => {
           >
             Crear Cuenta
           </button>
+          <button 
+              className="editarperfil" 
+              onClick={handleVolver}
+            >
+              Iniciar Sesion
+          </button>
+          
         </div>
       </form>
 

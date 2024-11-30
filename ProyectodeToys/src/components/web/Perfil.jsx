@@ -51,12 +51,16 @@ const UserProfile = () => {
     navigate('/historial');
   };
 
+  const handleEditarPerfilClick = () => {
+    navigate('/editar-perfil');
+  };
+
   if (loading) return <div className="loading">Cargando...</div>;
   if (error) return <div className="error">{error}</div>;
   if (!user) return <div className="not-found">Usuario no encontrado</div>;
 
   return (
-    <div className="user-profile-container">
+    <div className="header">
       <Header />
       <div className="user-profile-content">
         <div className="profile-card">
@@ -80,6 +84,12 @@ const UserProfile = () => {
               onClick={handleHistorialClick}
             >
               Historial
+            </button>
+            <button 
+              className="profile-button editarperfil-button" 
+              onClick={handleEditarPerfilClick}
+            >
+              Editar perfil
             </button>
           </div>
         </div>

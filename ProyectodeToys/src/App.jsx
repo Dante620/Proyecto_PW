@@ -22,6 +22,7 @@ import Sesion from './sesion.jsx';
 import Header from './components/web/Header.jsx';
 import UserProfile from './components/web/Perfil.jsx';
 import CrearCuenta from './crear.jsx';
+import EditarPerfil from './components/web/EditarPerfil.jsx';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path="/perfil" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
         <Route path="/historial" element={<PrivateRoute><PurchaseHistory /></PrivateRoute>} />
         <Route path="/pedidos" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
+        <Route path="/editar-perfil" element={<PrivateRoute><EditarPerfil /></PrivateRoute>} />
         
       </Routes>
     </Router>
