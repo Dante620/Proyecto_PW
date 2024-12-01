@@ -13,7 +13,7 @@ const OrderHistory = () => {
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const API_BASE_URL = 'https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net';
+  const API_BASE_URL = 'https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net';
 
   // Si no está autenticado, redirigimos al login
   if (!authUser) {

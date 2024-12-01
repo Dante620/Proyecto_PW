@@ -16,7 +16,7 @@ const ProductosCategoria = () => {
     // Cargar las categorías
     const cargarCategorias = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/categoria');
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/categoria');
             if (!response.ok) {
                 throw new Error('Error al cargar las categorías: ' + response.status);
             }
@@ -30,7 +30,7 @@ const ProductosCategoria = () => {
     // Cargar las marcas
     const cargarMarcas = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/marca');
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/marca');
             if (!response.ok) {
                 throw new Error('Error al cargar las marcas: ' + response.status);
             }
@@ -44,7 +44,7 @@ const ProductosCategoria = () => {
     // Cargar las imágenes
     const cargarImagenes = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/imagenesproductos');
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/imagenesproductos');
             if (!response.ok) {
                 throw new Error('Error al cargar las imágenes: ' + response.status);
             }
@@ -58,7 +58,7 @@ const ProductosCategoria = () => {
     // Cargar los productos filtrados por categoría
     const cargarProductos = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto');
             if (!response.ok) {
                 throw new Error('Error al cargar los productos: ' + response.status);
             }

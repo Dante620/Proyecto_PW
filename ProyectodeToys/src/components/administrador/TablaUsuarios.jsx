@@ -17,7 +17,7 @@ const Usuarios = () => {
     // Fetch all users
     const findAll = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario');
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario');
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
             setUsuarios(data); // No sorting applied to maintain original order
@@ -37,7 +37,7 @@ const Usuarios = () => {
                 id: maxId + 1
             };
 
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario', {
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const Usuarios = () => {
     // Update an existing user
     const update = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario', {
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const Usuarios = () => {
     // Remove a user
     const remove = async (id) => {
         try {
-            const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario/${id}`, {
+            const response = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) throw new Error('Network response was not ok');

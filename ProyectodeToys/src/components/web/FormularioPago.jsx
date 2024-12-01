@@ -19,7 +19,7 @@ const FormularioPago = () => {
         correoPypal: ''
     });
 
-    const API_BASE_URL = 'https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net';
+    const API_BASE_URL = 'https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/';
 
     useEffect(() => {
         const fetchCartItems = async () => {

@@ -19,9 +19,9 @@ const ProductoComponent = () => {
     // Fetch all products
     const findAll = async () => {
         try {
-            const productosResponse = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
-            const categoriasResponse = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/categoria');
-            const marcasResponse = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/marca');
+            const productosResponse = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto');
+            const categoriasResponse = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/categoria');
+            const marcasResponse = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/marca');
 
             if (!productosResponse.ok) throw new Error('Network response was not ok');
             if (!categoriasResponse.ok) throw new Error('Network response was not ok');
@@ -50,7 +50,7 @@ const ProductoComponent = () => {
                 id: maxId + 1
             };
 
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const ProductoComponent = () => {
     // Update an existing product
     const update = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto', {
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const ProductoComponent = () => {
     // Remove a product
     const remove = async (id) => {
         try {
-            const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto/${id}`, {
+            const response = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) throw new Error('Network response was not ok');

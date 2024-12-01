@@ -13,7 +13,7 @@ const Sesion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario/login', {
+    const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

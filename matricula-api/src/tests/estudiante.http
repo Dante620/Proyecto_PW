@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:4001/estudiante
+PUT https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/estudiante
 Content-Type: application/json
 
 {

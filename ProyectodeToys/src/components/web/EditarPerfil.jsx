@@ -30,7 +30,7 @@ const EditarPerfil = () => {
       }
 
       try {
-        const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario/${authUser.id}`);
+        const response = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario/${authUser.id}`);
         
         if (!response.ok) {
           throw new Error('Error al obtener el perfil del usuario');
@@ -84,7 +84,7 @@ const EditarPerfil = () => {
             ...(password && { password })
         });
 
-        const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario', {
+        const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

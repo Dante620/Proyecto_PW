@@ -15,7 +15,7 @@ const CrearCuenta = () => {
   // Fetch existing users to help with ID generation
   const fetchUsers = async () => {
     try {
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario');
+      const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario');
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
       setUsuarios(data);
@@ -31,7 +31,7 @@ const CrearCuenta = () => {
     const trimmedEmail = email.trim().toLowerCase();
 
     // Fetch all existing users to check email uniqueness
-    const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario');
+    const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario');
     
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -85,7 +85,7 @@ const handleSubmit = async (e) => {
         rol: 'cliente' // Fixed role as requested
       };
 
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario', {
+      const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -7,7 +7,7 @@ const Categorias = () => {
 
 
     const cargarCategorias = async () => {
-        await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/categoria')
+        await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/categoria')
             .then(response => response.json())
             .then(data => setCategorias(data))
     }

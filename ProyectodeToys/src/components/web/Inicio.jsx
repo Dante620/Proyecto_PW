@@ -13,7 +13,7 @@ const Inicio = () => {
         // Cargar todas las categorías
         const fetchCategorias = async () => {
             try {
-                const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/categoria');
+                const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/categoria');
                 const data = await response.json();
                 setCategorias(data);
             } catch (error) {
@@ -24,7 +24,7 @@ const Inicio = () => {
         // Cargar todos los productos
         const fetchProductos = async () => {
             try {
-                const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
+                const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto');
                 const data = await response.json();
                 setProductos(data);
             } catch (error) {
@@ -35,7 +35,7 @@ const Inicio = () => {
         // Cargar todas las imágenes de productos
         const fetchImagenesProductos = async () => {
             try {
-                const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/imagenesproductos');
+                const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/imagenesproductos');
                 const data = await response.json();
                 setImagenesProductos(data);
             } catch (error) {

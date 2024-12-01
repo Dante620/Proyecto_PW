@@ -24,7 +24,7 @@ const UserProfile = () => {
       }
 
       try {
-        const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario/${authUser.id}`);
+        const response = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario/${authUser.id}`);
         
         if (!response.ok) {
           throw new Error('Error al obtener el perfil del usuario');

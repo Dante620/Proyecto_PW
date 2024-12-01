@@ -14,7 +14,7 @@ const PedidoComponent = () => {
   // Fetch all pedidos
   const findAll = async () => {
     try {
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/pedido');
+      const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/pedido');
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
       setPedidos(data);
@@ -36,7 +36,7 @@ const completarPedido = async (pedido) => {
       // El total se calculará automáticamente en el backend como antes
     };
 
-    const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra', {
+    const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/compra', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const completarPedido = async (pedido) => {
   // Eliminar Pedido
   const eliminarPedido = async (id) => {
     try {
-      const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/pedido/${id}`, {
+      const response = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/pedido/${id}`, {
         method: 'DELETE',
       });
 
@@ -76,7 +76,7 @@ const completarPedido = async (pedido) => {
   // Create a new pedido
   const create = async () => {
     try {
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/pedido', {
+      const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/pedido', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

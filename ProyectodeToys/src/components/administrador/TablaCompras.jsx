@@ -14,7 +14,7 @@ const CompraComponent = () => {
   // Fetch all compras
   const findAll = async () => {
     try {
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra');
+      const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/compra');
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
       setCompras(data);
@@ -27,7 +27,7 @@ const CompraComponent = () => {
   // Eliminar Compra
   const eliminarCompra = async (id) => {
     try {
-      const response = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra/${id}`, {
+      const response = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/compra/${id}`, {
         method: 'DELETE',
       });
 
@@ -44,7 +44,7 @@ const CompraComponent = () => {
   // Crear una nueva compra
   const create = async () => {
     try {
-      const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/compra', {
+      const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/compra', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

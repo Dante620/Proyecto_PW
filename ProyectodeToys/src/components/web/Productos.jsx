@@ -17,7 +17,7 @@ const Productos = () => {
     // Cargar las imágenes del producto
     const cargarImagenes = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/imagenesproductos');
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/imagenesproductos');
             if (!response.ok) {
                 throw new Error('Error al cargar las imágenes');
             }
@@ -37,7 +37,7 @@ const Productos = () => {
     // Cargar los detalles del producto
     const cargarProducto = async () => {
         try {
-            const response = await fetch('https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto');
+            const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto');
             if (!response.ok) {
                 throw new Error('Error al cargar el producto');
             }
@@ -46,7 +46,7 @@ const Productos = () => {
             const productoSeleccionado = data.find(p => p.nombre.toLowerCase() === nombreDecodificado.toLowerCase());
             if (productoSeleccionado) {
                 setProducto(productoSeleccionado);
-                const marcaResponse = await fetch(`https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/marca/${productoSeleccionado.id_marca}`);
+                const marcaResponse = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/marca/${productoSeleccionado.id_marca}`);
                 const marcaData = await marcaResponse.json();
                 setMarca(marcaData);
             }

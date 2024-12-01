@@ -10,7 +10,7 @@ const GestionImagenesProductos = () => {
   const [modoEdicion, setModoEdicion] = useState(false);
   const [error, setError] = useState(null);
 
-  const URL_API = 'https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/imagenesproductos';
+  const URL_API = 'https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/imagenesproductos';
 
   useEffect(() => {
     obtenerImagenes();
