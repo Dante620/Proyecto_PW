@@ -124,7 +124,7 @@ const EditarPerfil = () => {
 
   return (
     <div className="user-profile-container">
-      <Header />
+      
       <div className="editar-perfil-content">
         <div className="profile-card">
           <h1 className="profile-title">Editar Perfil</h1>

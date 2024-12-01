@@ -82,7 +82,7 @@ const OrderHistory = () => {
 
   return (
     <div className="header">
-      <Header />
+      
 
       <div className="order-history-container">
         <h1>Pedidos Pendientes</h1>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './ProductosCategoria.css';
 
 import Header from './Header.jsx';
+
 const ProductosCategoria = () => {
     const { nombreCategoria } = useParams(); // Captura el parámetro de la URL
     const [categorias, setCategorias] = useState([]);
@@ -11,7 +12,6 @@ const ProductosCategoria = () => {
     const [marcas, setMarcas] = useState([]);
     const [imagenes, setImagenes] = useState([]); // Estado para imágenes
     const [showSearchModal, setShowSearchModal] = useState(false);
-
 
     // Cargar las categorías
     const cargarCategorias = async () => {
@@ -99,21 +99,7 @@ const ProductosCategoria = () => {
 
     return (
         <>
-             <Header showSearchModal={showSearchModal} setShowSearchModal={setShowSearchModal} />
-            {showSearchModal && (
-                <div className="search-overlay">
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            placeholder="Búsqueda"
-                            className="search-bar-input"
-                        />
-                        <button className="search-bar-close" onClick={() => setShowSearchModal(false)}>
-                            X
-                        </button>
-                    </div>
-                </div>
-            )}
+
             <div style={{ padding: '20px' }}>
                 <h2>{nombreCategoria}</h2>
                 <div className="productos-grid">
@@ -123,18 +109,17 @@ const ProductosCategoria = () => {
                             const primeraImagen = imagenes.find((img) => img.id_producto === producto.id); // Encuentra la primera imagen
                             console.log(imagenes);
                             return (
-                                <a href={`/productos/${encodeURIComponent(producto.nombre)}`}>
-                                <div className="producto-item">
-
-                                    <img
-                                        src={`../${primeraImagen ? primeraImagen.url : 'imagen_default.jpg'}`}
-                                        alt={producto.nombre}
-                                        className="producto-imagen"
-                                    />
-                                    <h3>{producto.nombre}</h3>
-                                    <p>Marca: {marca ? marca.nombre : 'Desconocida'}</p>
-                                    <p>Precio: S/. {producto.precio}</p>
-                                </div>
+                                <a href={`/productos/${encodeURIComponent(producto.nombre)}`} key={producto.id}>
+                                    <div className="producto-item">
+                                        <img
+                                            src={primeraImagen ? primeraImagen.url : 'https://path-to-default-image.com/imagen_default.jpg'} // Usar URL completa para las imágenes
+                                            alt={producto.nombre}
+                                            className="producto-imagen"
+                                        />
+                                        <h3>{producto.nombre}</h3>
+                                        <p>Marca: {marca ? marca.nombre : 'Desconocida'}</p>
+                                        <p>Precio: S/. {producto.precio}</p>
+                                    </div>
                                 </a>
                             );
                         })

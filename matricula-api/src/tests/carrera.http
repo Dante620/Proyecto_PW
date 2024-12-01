@@ -1,4 +1,4 @@
-GET https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto
+GET https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito/active/10
 
 ####
 
@@ -6,26 +6,26 @@ GET http://localhost:4001/curso/4
 
 ####
 
-POST https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/usuario/login
+POST https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito
 Content-Type: application/json
 
 {
-        "email": "laura@gmail.com",
-        "password":"contr303"
-  
+        "id_usuario": 10,
+        "total": 0     
 }
 
 ###
 
-PUT https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/p
+PUT https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito/6
 Content-Type: application/json
 
 {
-        "id": 28,
-        "nombre": "minecraft"
         
+        "estado": "activo"
+            
 }
 
 ####
 
-DELETE https://webprogra-api-anhyamamfkdebbcg.eastus2-01.azurewebsites.net/producto/28
+DELETE https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito/14
+

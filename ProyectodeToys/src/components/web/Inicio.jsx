@@ -97,26 +97,12 @@ const Inicio = () => {
 
     return (
         <>
-            <Header showSearchModal={showSearchModal} setShowSearchModal={setShowSearchModal} />
-            {showSearchModal && (
-                <div className="search-overlay">
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            placeholder="Búsqueda"
-                            className="search-bar-input"
-                        />
-                        <button className="search-bar-close" onClick={() => setShowSearchModal(false)}>
-                            X
-                        </button>
-                    </div>
-                </div>
-            )}
+
 
             <div className="banner-section">
                 <ul>
-                    <li><img src="../../imagenes/Arriba/Imagen2.jpg" alt="Banner 1" /></li>
-                    <li><img src="../../imagenes/Arriba/Imagen4.jpg" alt="Banner 2" /></li>
+                    <li><img src="https://gordo.blob.core.windows.net/componentes/Imagen2.jpg" alt="Banner 1" /></li>
+                    <li><img src="https://gordo.blob.core.windows.net/componentes/Imagen4.jpg" alt="Banner 2" /></li>
                 </ul>
             </div>
 
@@ -157,14 +143,14 @@ const Inicio = () => {
                 <ul>
                     {['1', '2', '3', '4', '5', '6'].map((num) => (
                         <li key={num}>
-                            <img src={`../../imagenes/videos/video ${num}.png`} alt={`Video ${num}`} />
+                            <img src={`https://gordo.blob.core.windows.net/componentes/video%20${num}.png`} alt={`Video ${num}`} />
                         </li>
                     ))}
-                </ul>
+                </ul> 
                 <ul>
                     {['7', '8', '5', '9', '10', '11'].map((num) => (
                         <li key={num}>
-                            <img src={`../../imagenes/videos/video ${num}.png`} alt={`Video ${num}`} />
+                            <img src={`https://gordo.blob.core.windows.net/componentes/video%20${num}.png`} alt={`Video ${num}`} />
                         </li>
                     ))}
                 </ul>
@@ -173,7 +159,7 @@ const Inicio = () => {
             {/* Resto del componente permanece igual */}
             <div className="info">
                 <section>
-                    <img src="../../imagenes/Imagen12.jpg" alt="Banner" />
+                    <img src="https://gordo.blob.core.windows.net/componentes/Imagen12.jpg" alt="Banner" />
                 </section>
                 <aside>
                     <h3>Tambien puedes recibir informacion por correo Electronico</h3>
@@ -187,7 +173,7 @@ const Inicio = () => {
                 <ul>
                     {['18', '19', '20'].map((num) => (
                         <li key={num}>
-                            <img src={`../../imagenes/relleno/Imagen${num}.jpg`} alt={`Relleno ${num}`} />
+                            <img src={`https://gordo.blob.core.windows.net/componentes/Imagen${num}.jpg`} alt={`Relleno ${num}`} />
                         </li>
                     ))}
                 </ul>
@@ -201,7 +187,7 @@ const Inicio = () => {
                 <ul>
                     <li>
                         <ol>
-                            <li><img src="../../imagenes/Imagen26.jpg" alt="Location" /></li>
+                            <li><img src="https://gordo.blob.core.windows.net/componentes/Imagen26.jpg" alt="Location" /></li>
                             <li>Av.La Paz 138, Miraflores - Lima</li>
                             <li>01-4001815 / 966 323 587</li>
                             <li>contacto@toymaster.pe</li>

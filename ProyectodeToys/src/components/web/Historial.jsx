@@ -82,7 +82,7 @@ const PurchaseHistory = () => {
 
   return (
     <div className="header">
-      <Header />
+      
 
       <div className="purchase-history-container">
         <h1>Historial de Compras</h1>

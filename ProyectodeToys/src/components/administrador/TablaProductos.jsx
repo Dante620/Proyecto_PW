@@ -19,19 +19,22 @@ const ProductoComponent = () => {
     // Fetch all products
     const findAll = async () => {
         try {
-            const productosResponse = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto');
-            const categoriasResponse = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/categoria');
-            const marcasResponse = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/marca');
+            const [productosResponse, categoriasResponse, marcasResponse] = await Promise.all([
+                fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto'),
+                fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/categoria'),
+                fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/marca'),
+            ]);
 
-            if (!productosResponse.ok) throw new Error('Network response was not ok');
-            if (!categoriasResponse.ok) throw new Error('Network response was not ok');
-            if (!marcasResponse.ok) throw new Error('Network response was not ok');
+            if (!productosResponse.ok || !categoriasResponse.ok || !marcasResponse.ok)
+                throw new Error('Failed to fetch data');
 
-            const productosData = await productosResponse.json();
-            const categoriasData = await categoriasResponse.json();
-            const marcasData = await marcasResponse.json();
+            const [productosData, categoriasData, marcasData] = await Promise.all([
+                productosResponse.json(),
+                categoriasResponse.json(),
+                marcasResponse.json(),
+            ]);
 
-            setProductos(productosData);
+            setProductos(productosData.sort((a, b) => a.id - b.id)); // Mantener orden por ID
             setCategorias(categoriasData);
             setMarcas(marcasData);
         } catch (error) {
@@ -44,22 +47,17 @@ const ProductoComponent = () => {
     const create = async () => {
         try {
             const maxId = productos.length > 0 ? Math.max(...productos.map(p => p.id)) : 0;
-
-            const newProducto = {
-                ...currentProducto,
-                id: maxId + 1
-            };
+            const newProducto = { ...currentProducto, id: maxId + 1 };
 
             const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newProducto)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newProducto),
             });
-            if (!response.ok) throw new Error('Network response was not ok');
-            
-            setProductos([...productos, newProducto]);
+
+            if (!response.ok) throw new Error('Failed to create product');
+
+            setProductos([...productos, newProducto].sort((a, b) => a.id - b.id)); // Reordenar
             resetForm();
             setIsModalOpen(false);
         } catch (error) {
@@ -73,14 +71,12 @@ const ProductoComponent = () => {
         try {
             const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto', {
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(currentProducto)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(currentProducto),
             });
-            if (!response.ok) throw new Error('Network response was not ok');
 
-            // Update product in the local state without changing the order
+            if (!response.ok) throw new Error('Failed to update product');
+
             setProductos(productos.map(p => (p.id === currentProducto.id ? currentProducto : p)));
             resetForm();
             setIsModalOpen(false);
@@ -96,7 +92,9 @@ const ProductoComponent = () => {
             const response = await fetch(`https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto/${id}`, {
                 method: 'DELETE',
             });
-            if (!response.ok) throw new Error('Network response was not ok');
+
+            if (!response.ok) throw new Error('Failed to delete product');
+
             setProductos(productos.filter(p => p.id !== id));
         } catch (error) {
             console.error('Error deleting product:', error);
@@ -112,7 +110,7 @@ const ProductoComponent = () => {
             descripcion: '',
             precio: '',
             id_categoria: '',
-            id_marca: ''
+            id_marca: '',
         });
         setIsEditing(false);
     };
@@ -131,10 +129,7 @@ const ProductoComponent = () => {
     // Handle input changes
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setCurrentProducto((prev) => ({
-            ...prev,
-            [name]: value
-        }));
+        setCurrentProducto((prev) => ({ ...prev, [name]: value }));
     };
 
     // Load products on component mount
@@ -153,7 +148,6 @@ const ProductoComponent = () => {
         const marca = marcas.find(marc => marc.id === Number(id_marca));
         return marca ? marca.nombre : 'N/A';
     };
-
     return (
         <div className="producto-container">
             <div className="producto-header">

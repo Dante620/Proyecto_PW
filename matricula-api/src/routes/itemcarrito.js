@@ -14,5 +14,7 @@ router.put('/:itemId/:cartId', controller.updateItemQuantity);
 
 // Ruta para eliminar un producto del carrito
 router.delete('/:itemId/:cartId', controller.removeItem);
+
+
 router.delete('/:cartId', controller.removeAllItems);
 export default router;

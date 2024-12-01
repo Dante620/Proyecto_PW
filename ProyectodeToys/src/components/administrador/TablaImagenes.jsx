@@ -79,27 +79,27 @@ const GestionImagenesProductos = () => {
 
   const actualizarImagen = async () => {
     try {
-      const respuesta = await fetch(URL_API, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(imagenActual)
-      });
+        const response = await fetch(URL_API, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(imagenActual)
+        });
+        
+        if (!response.ok) throw new Error('Error en la respuesta de red');
 
-      if (!respuesta.ok) throw new Error('Error en la respuesta de red');
-
-      // Actualizar la imagen en el estado sin alterar el orden
-      setImagenes(imagenes.map(img => 
-        img.id === imagenActual.id ? imagenActual : img
-      ));
-
-      cerrarModal();
+        // Actualiza la imagen en el estado local sin cambiar el orden
+        setImagenes(imagenes.map(img => 
+            img.id === imagenActual.id ? imagenActual : img
+        ));
+        
+        cerrarModal();
     } catch (error) {
-      console.error('Error al actualizar imagen:', error);
-      setError('No se pudo actualizar la imagen');
+        console.error('Error al actualizar imagen:', error);
+        setError('No se pudo actualizar la imagen');
     }
-  };
+};
 
   const enviarFormulario = async (e) => {
     e.preventDefault();

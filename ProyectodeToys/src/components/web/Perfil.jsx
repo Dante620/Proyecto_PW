@@ -61,7 +61,7 @@ const UserProfile = () => {
 
   return (
     <div className="header">
-      <Header />
+     
       <div className="user-profile-content">
         <div className="profile-card">
           <h1 className="profile-title">Perfil de Usuario</h1>

@@ -24,8 +24,9 @@ const findOne = async (req,res) => {
 }
 
 const update = async (req, res) => {
-    const id = req.params.id;  // Cambiado para obtener el id desde req.params
-    const result = await repository.completeCart(id);
+    const id = req.params.id;
+    const { estado } = req.body;  // Extraer el estado del cuerpo de la solicitud
+    const result = await repository.completeCart(id, estado);
 
     return res.status(200).json(result);
 }

@@ -20,7 +20,10 @@ const Usuarios = () => {
             const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario');
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
-            setUsuarios(data); // No sorting applied to maintain original order
+
+            // Ensure the list is sorted by ID
+            const sortedData = data.sort((a, b) => a.id - b.id);
+            setUsuarios(sortedData);
         } catch (error) {
             console.error('Error fetching users:', error);
             alert('Failed to fetch users');
@@ -45,7 +48,7 @@ const Usuarios = () => {
                 body: JSON.stringify(newUsuario)
             });
             if (!response.ok) throw new Error('Network response was not ok');
-            setUsuarios([...usuarios, newUsuario]);
+            setUsuarios([...usuarios, newUsuario].sort((a, b) => a.id - b.id)); // Sort after adding
             resetForm();
             setIsModalOpen(false);
         } catch (error) {
@@ -62,12 +65,13 @@ const Usuarios = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(currentUsuario) // Ensure `id` is part of the body
+                body: JSON.stringify(currentUsuario)
             });
             if (!response.ok) throw new Error('Network response was not ok');
 
             // Update user in the local state without changing the order
-            setUsuarios(usuarios.map(u => (u.id === currentUsuario.id ? currentUsuario : u)));
+            const updatedUsuarios = usuarios.map(u => (u.id === currentUsuario.id ? currentUsuario : u));
+            setUsuarios(updatedUsuarios.sort((a, b) => a.id - b.id)); // Ensure order
             resetForm();
             setIsModalOpen(false);
         } catch (error) {
@@ -260,4 +264,3 @@ const Usuarios = () => {
 };
 
 export default Usuarios;
-

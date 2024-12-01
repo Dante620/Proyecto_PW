@@ -55,10 +55,10 @@ class CarritoRepository extends RepositoryBase {
     }
 
     // Completar el carrito (cambiar estado a 'completado')
-    async completeCart(cartId) {
+    async completeCart(cartId, estado) {
         try {
             await this.model.update(
-                { estado: 'completado' },
+                { estado: estado },
                 { where: { id: cartId } }
             );
             return true;
@@ -67,22 +67,26 @@ class CarritoRepository extends RepositoryBase {
             return false;
         }
     }
+    // Eliminar el carrito por id de carrito
+// En el CarritoRepository (repositories/carrito.js)
+async removeActiveCart(cartId) {
+    try {
+        // Primero eliminar los items asociados al carrito
+        await itemcarrito.destroy({
+            where: { id_carrito: cartId }
+        });
 
-    // Eliminar el carrito activo de un usuario
-    async removeActiveCart(userId) {
-        try {
-            const activeCart = await this.getActiveCart(userId);
-            if (!activeCart) {
-                console.log('No active cart found for this user');
-                return false;
-            }
-            await this.model.destroy({ where: { id: activeCart.id } });
-            return true;
-        } catch (error) {
-            console.log(error);
-            return false;
-        }
+        // Luego eliminar el carrito
+        await this.model.destroy({
+            where: { id: cartId }
+        });
+
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
     }
+}
 
     // Actualizar el total del carrito
     async updateTotal(cartId) {
