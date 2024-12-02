@@ -15,6 +15,12 @@ const ProductoComponent = () => {
     });
     const [isEditing, setIsEditing] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+    
 
     // Fetch all products
     const findAll = async () => {
@@ -150,54 +156,73 @@ const ProductoComponent = () => {
     };
     return (
         <div className="producto-container">
-            <div className="producto-header">
-                <h1>Productos</h1>
-                <button onClick={() => openModal()} className="btn-add">
-                    Agregar Nuevo Producto
-                </button>
-            </div>
+          <div className="producto-header">
+    <h1>Productos</h1>
+    <button onClick={() => openModal()} className="btn-add">
+        Agregar Nuevo Producto
+    </button>
 
-            <table className="producto-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th>Categoría</th>
-                        <th>Marca</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {productos.map((producto) => (
-                        <tr key={producto.id}>
-                            <td>{producto.id}</td>
-                            <td>{producto.nombre}</td>
-                            <td>{producto.descripcion}</td>
-                            <td>${producto.precio}</td>
-                            <td>{getCategoryName(producto.id_categoria)}</td>
-                            <td>{getMarcaName(producto.id_marca)}</td>
-                            <td>
-                                <div className="action-buttons">
-                                    <button
-                                        onClick={() => openModal(producto)}
-                                        className="btn-edit"
-                                    >
-                                        Editar
-                                    </button>
-                                    <button
-                                        onClick={() => remove(producto.id)}
-                                        className="btn-delete"
-                                    >
-                                        Eliminar
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+</div>
+
+<div className="search-bar">
+    <input
+        type="text"
+        placeholder="Buscar producto por nombre"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        className="search-input"
+    />
+</div>
+
+
+
+<table className="producto-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Marca</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {productos
+            .filter((producto) =>
+                producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .map((producto) => (
+                <tr key={producto.id}>
+                    <td>{producto.id}</td>
+                    <td>{producto.nombre}</td>
+                    <td>{producto.descripcion}</td>
+                    <td>${producto.precio}</td>
+                    <td>{getCategoryName(producto.id_categoria)}</td>
+                    <td>{getMarcaName(producto.id_marca)}</td>
+                    <td>
+                        <div className="action-buttons">
+                            <button
+                                onClick={() => openModal(producto)}
+                                className="btn-edit"
+                            >
+                                Editar
+                            </button>
+                            <button
+                                onClick={() => remove(producto.id)}
+                                className="btn-delete"
+                            >
+                                Eliminar
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            ))}
+    </tbody>
+</table>
+
+
 
             {isModalOpen && (
                 <div className="modal-overlay">

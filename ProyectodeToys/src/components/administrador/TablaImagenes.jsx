@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './imagenes.css';
+
 const GestionImagenesProductos = () => {
   const [imagenes, setImagenes] = useState([]);
   const [imagenActual, setImagenActual] = useState({
@@ -20,7 +21,11 @@ const GestionImagenesProductos = () => {
     try {
       const respuesta = await fetch(URL_API);
       const datos = await respuesta.json();
-      setImagenes(datos);
+      
+      // Ordenar las imágenes por id_producto
+      const imagenesOrdenadas = datos.sort((a, b) => a.id_producto - b.id_producto);
+      
+      setImagenes(imagenesOrdenadas);
     } catch (error) {
       setError('Error al obtener imágenes');
     }
@@ -79,27 +84,27 @@ const GestionImagenesProductos = () => {
 
   const actualizarImagen = async () => {
     try {
-        const response = await fetch(URL_API, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(imagenActual)
-        });
-        
-        if (!response.ok) throw new Error('Error en la respuesta de red');
+      const respuesta = await fetch(URL_API, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(imagenActual)
+      });
 
-        // Actualiza la imagen en el estado local sin cambiar el orden
-        setImagenes(imagenes.map(img => 
-            img.id === imagenActual.id ? imagenActual : img
-        ));
-        
-        cerrarModal();
+      if (!respuesta.ok) throw new Error('Error en la respuesta de red');
+
+      // Actualizar la imagen en el estado sin alterar el orden
+      setImagenes(imagenes.map(img => 
+        img.id === imagenActual.id ? imagenActual : img
+      ));
+
+      cerrarModal();
     } catch (error) {
-        console.error('Error al actualizar imagen:', error);
-        setError('No se pudo actualizar la imagen');
+      console.error('Error al actualizar imagen:', error);
+      setError('No se pudo actualizar la imagen');
     }
-};
+  };
 
   const enviarFormulario = async (e) => {
     e.preventDefault();

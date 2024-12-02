@@ -1,22 +1,26 @@
-GET https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito/active/10
+GET http://localhost:8080/imagenesproductos/1
 
 ####
 
-GET http://localhost:4001/curso/4
 
-####
-
-POST https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito
+POST https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/imagenesproductos
 Content-Type: application/json
 
+ 
+    
+
 {
-        "id_usuario": 10,
-        "total": 0     
+      
+"id_producto": 1,
+  "url": "https://gordo.blob.core.windows.net/imagenes/Producto1-4.jpg"
+  
 }
+
+
 
 ###
 
-PUT https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito/6
+PUT https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/imagenesproductos/128
 Content-Type: application/json
 
 {
@@ -27,5 +31,5 @@ Content-Type: application/json
 
 ####
 
-DELETE https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/carrito/14
+DELETE https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/imagenesproductos/129
 
