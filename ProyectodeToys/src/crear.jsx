@@ -70,14 +70,10 @@ const handleSubmit = async (e) => {
   }
 
     try {
-      // Calculate the next ID
-      const maxId = usuarios.length > 0 
-        ? Math.max(...usuarios.map(u => u.id)) 
-        : 0;
-
+      
       // Create the new user
       const newUsuario = {
-        id: maxId + 1,
+       
         nombre,
         apellido,
         email,
@@ -179,7 +175,7 @@ const handleSubmit = async (e) => {
 
       {/* Modal de Confirmación */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-xl text-center">
             <h3 className="text-xl font-bold mb-4">Cuenta Creada</h3>
             <p className="mb-4">Tu cuenta ha sido creada exitosamente.</p>

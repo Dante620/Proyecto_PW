@@ -16,6 +16,8 @@ const Header = ({ showSearchModal, setShowSearchModal }) => {
 
     const API_BASE_URL = 'https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net';
 
+
+    
     const handleConfirmCart = () => {
         if (carritoItems.length === 0) {
             alert('El carrito está vacío');
@@ -181,40 +183,44 @@ const updateItemQuantity = async (itemId, newQuantity) => {
             </nav>
 
             <ul id="social-icons">
-                <li onClick={() => setShowSearchModal(true)}> {/* Abre el modal de búsqueda al hacer clic en la lupa */}
-                    <img src="https://gordo.blob.core.windows.net/componentes/Imagen29.jpg" alt="Search Icon" className="social-icon" />
-                </li>
-                <li>
-                    <Link to="/perfil">
-                        <img src="https://gordo.blob.core.windows.net/componentes/Imagen30.jpg" alt="User Icon" className="social-icon" />
-                    </Link>
-                </li>
-                <li>
-                    <img src="https://gordo.blob.core.windows.net/componentes/Imagen31.jpg" alt="Social 3" className="social-icon" />
-                </li>
-                <li onClick={handleSocial4Click}>
-                    <img 
-                        src="https://gordo.blob.core.windows.net/componentes/Imagen32.jpg" 
-                        alt="Social 4" 
-                        className="social-icon" 
-                    />
-                </li>
+    <li onClick={() => setShowSearchModal(true)}> {/* Abre el modal de búsqueda al hacer clic en la lupa */}
+        <img src="https://gordo.blob.core.windows.net/componentes/Imagen29.jpg" alt="Search Icon" className="social-icon" />
+    </li>
+    <li>
+        <Link to="/perfil">
+            <img src="https://gordo.blob.core.windows.net/componentes/Imagen30.jpg" alt="User Icon" className="social-icon" />
+        </Link>
+    </li>
+    <li>
+        <img src="https://gordo.blob.core.windows.net/componentes/Imagen31.jpg" alt="Social 3" className="social-icon" />
+    </li>
+    <li onClick={handleSocial4Click}>
+        <img 
+            src="https://gordo.blob.core.windows.net/componentes/Imagen32.jpg" 
+            alt="Social 4" 
+            className="social-icon" 
+        />
+    </li>
 
-                {user && user.rol === 'admin' && (
-                    <li>
-                        <Link to="/admin">Panel de administración</Link>  {/* Icono de Panel solo para admin */}
-                    </li>
-                )}
-                {user ? (
-                    <li>
-                        <button onClick={logout}>Cerrar sesión</button>
-                    </li>
-                ) : (
-                    <li>
-                        <Link to="/login">Iniciar sesión</Link>
-                    </li>
-                )}
-            </ul>
+    {/* Botón del panel de administración, visible solo si el usuario es administrador */}
+    {user && user.rol === 'admin' && (
+        <li>
+            <Link to="/admin" className="admin-panel">Panel de administración</Link> {/* Clase específica para estilos */}
+        </li>
+    )}
+
+    {/* Botón de inicio o cierre de sesión */}
+    {user ? (
+        <li>
+            <button className="logout-button" onClick={logout}>Cerrar sesión</button> {/* Clase específica para estilos */}
+        </li>
+    ) : (
+        <li>
+            <Link to="/login" className="login-link">Iniciar sesión</Link> {/* Clase específica para estilos */}
+        </li>
+    )}
+</ul>
+
             {isCartSidebarOpen && (
                 <div className="cart-sidebar">
                     <button onClick={() => setIsCartSidebarOpen(false)}>Cerrar</button>

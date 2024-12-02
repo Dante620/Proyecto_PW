@@ -52,19 +52,21 @@ const ProductoComponent = () => {
     // Create a new product
     const create = async () => {
         try {
-            const maxId = productos.length > 0 ? Math.max(...productos.map(p => p.id)) : 0;
-            const newProducto = { ...currentProducto, id: maxId + 1 };
-
             const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/producto', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newProducto),
+                body: JSON.stringify(currentProducto),
             });
-
+    
             if (!response.ok) throw new Error('Failed to create product');
-
-            setProductos([...productos, newProducto].sort((a, b) => a.id - b.id)); // Reordenar
+    
+            // Recargar datos después de crear
+            findAll();
+            
+            // Resetear el formulario
             resetForm();
+            
+            // Cerrar el modal
             setIsModalOpen(false);
         } catch (error) {
             console.error('Error creating product:', error);

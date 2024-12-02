@@ -33,23 +33,23 @@ const Usuarios = () => {
     // Create a new user
     const create = async () => {
         try {
-            const maxId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) : 0;
-
-            const newUsuario = {
-                ...currentUsuario,
-                id: maxId + 1
-            };
-
             const response = await fetch('https://api-progra-h9esdegcdzeebjd4.eastus2-01.azurewebsites.net/usuario', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newUsuario)
+                body: JSON.stringify(currentUsuario)
             });
+    
             if (!response.ok) throw new Error('Network response was not ok');
-            setUsuarios([...usuarios, newUsuario].sort((a, b) => a.id - b.id)); // Sort after adding
+    
+            // Recargar datos después de crear
+            findAll();
+            
+            // Resetear el formulario
             resetForm();
+            
+            // Cerrar el modal
             setIsModalOpen(false);
         } catch (error) {
             console.error('Error creating user:', error);
@@ -137,7 +137,7 @@ const Usuarios = () => {
             <div className="usuario-header">
                 <h1>Usuarios</h1>
                 <button onClick={() => openModal()} className="btn-add">
-                    Agregar Nuevo Usuario
+                    Agregar nuevo usuario
                 </button>
             </div>
 

@@ -123,6 +123,32 @@
     text-align: center;
     margin: 20px 0;
 }
+#social-icons {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px; /* Adds space between items */
+}
+
+#social-icons li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#social-icons .social-icon {
+    width: 30px; /* Consistent icon size */
+    height: 30px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#social-icons .social-icon:hover {
+    transform: scale(1.1);
+}
 
 .search-modal {
     position: fixed;
@@ -175,3 +201,54 @@
 .search-modal button:hover {
     background-color: #0056b3;
 }
+
+/* Buttons with consistent styling */
+#social-icons .login-link,
+#social-icons .logout-button,
+#social-icons .admin-panel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px; /* Match icon height */
+    padding: 0 10px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Login button */
+#social-icons .login-link {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#social-icons .login-link:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Logout button */
+#social-icons .logout-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+#social-icons .logout-button:hover {
+    background-color: #e41f1f;
+    transform: scale(1.05);
+}
+
+/* Admin panel button */
+#social-icons .admin-panel {
+    background-color: #2196F3;
+    color: white;
+}
+
+#social-icons .admin-panel:hover {
+    background-color: #0b7dda;
+    transform: scale(1.05);
+}
+
